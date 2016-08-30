@@ -1,0 +1,2 @@
+# KoReKuRay
+Niftyインターンで作成

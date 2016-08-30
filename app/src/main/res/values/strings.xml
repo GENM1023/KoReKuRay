@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KoReKuRay</string>
+    <string name="unit_metre">m</string>
+    <string name="unit_inch">inch</string>
+    <string name="measurement_start">Start</string>
+    <string name="measurement_end">Stop</string>
+    <string name="menu">Menu</string>
+    <string name="action_length">Length</string>
+    <string name="action_area">Area</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_preference">Preference</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_group_other">others</string>
+    <string name="menu_wtf">What is KoReKuRay</string>
+</resources>

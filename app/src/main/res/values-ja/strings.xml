@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KoReKuRay</string>
+    <string name="measurement_end">計測停止</string>
+    <string name="measurement_start">計測開始</string>
+    <string name="menu">メニュー</string>
+    <string name="unit_inch">インチ</string>
+    <string name="unit_metre">メートル</string>
+    <string name="action_length">長さ</string>
+    <string name="action_area">面積</string>
+    <string name="menu_info">お知らせ</string>
+    <string name="menu_home">ホーム</string>
+    <string name="menu_preference">設定</string>
+    <string name="menu_group_other">その他</string>
+    <string name="menu_wtf">このアプリについて</string>
+</resources>

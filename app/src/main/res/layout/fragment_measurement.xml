@@ -6,8 +6,8 @@
             name="fragment"
             type="jp.yitt.bluetoothlowenergytest.MeasurementFragment"/>
         <variable
-            name="model"
-            type="jp.yitt.bluetoothlowenergytest.model.LengthData"/>
+            name="viewmodel"
+            type="jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel"/>
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@{model.length}"
+            android:text="@{viewmodel.getLength}"
             android:id="@+id/textView3"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"

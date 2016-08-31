@@ -8,12 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalDateTime;
-
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
-
+import jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel;
 
 /**
  * Created by genm1023 on 8/31/16.
@@ -21,7 +18,7 @@ import jp.yitt.bluetoothlowenergytest.model.LengthData;
 public class MeasurementFragment extends Fragment{
     public static final String TAG = MeasurementFragment.class.getSimpleName();
     FragmentMeasurementBinding binding;
-
+    LengthDataViewModel lengthDataViewModel;
     public static MeasurementFragment newInstance(){
         return new MeasurementFragment();
     }
@@ -37,8 +34,9 @@ public class MeasurementFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         binding = FragmentMeasurementBinding.bind(getView());
-        LengthData lengthData = new LengthData("ほげ", LocalDateTime.now());
-        binding.setModel(lengthData);
+        lengthDataViewModel = new LengthDataViewModel(new LengthData());
+        binding.setViewmodel(lengthDataViewModel);
+
     }
     @Override
     public void onAttach(Context context){
@@ -50,8 +48,7 @@ public class MeasurementFragment extends Fragment{
         super.onStart();
         Log.d(TAG, "onStart");
 
-
-
+        lengthDataViewModel.setLength("ほげ");
 
     }
 

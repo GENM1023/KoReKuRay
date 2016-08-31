@@ -4,6 +4,9 @@ import android.app.Application;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by genm1023 on 8/31/16.
  */
@@ -12,6 +15,8 @@ public class MyApp extends Application{
     public void onCreate(){
         super.onCreate();
         AndroidThreeTen.init(this);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
     }
 }

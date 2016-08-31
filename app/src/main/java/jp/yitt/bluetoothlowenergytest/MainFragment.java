@@ -11,19 +11,34 @@ import android.view.ViewGroup;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
+import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
+import jp.yitt.bluetoothlowenergytest.model.LengthData;
 
 /**
  * Created by genm1023 on 8/31/16.
  */
 public class MainFragment extends Fragment {
     public static final String TAG = MainFragment.class.getSimpleName();
-
     FragmentMainBinding binding;
+    private Realm realm;
+
+    /*LengthDataViewModel[] lengthDataViewModels ={
+            new LengthDataViewModel(new LengthData("データ1","100cm","2016/08/31")),
+            new LengthDataViewModel(new LengthData("データ2","120cm","2016/08/30")),
+            new LengthDataViewModel(new LengthData("データ3","203cm","2016/08/29")),
+            new LengthDataViewModel(new LengthData("データ4","40cm","2016/08/28")),
+            new LengthDataViewModel(new LengthData("データ5","50cm","2016/08/27"))
+    };*/
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         Log.d(TAG,"onCreate");
+        realm= Realm.getDefaultInstance();
+
     }
 
     public static MainFragment newInstance(){
@@ -33,9 +48,10 @@ public class MainFragment extends Fragment {
     public void listAdd(View v){
         Log.d(TAG,"listAdd");
 
+
+
     }
 
-    //finish()によりcallされる
     public void startMeasurementActivity(View v){
         Log.d(TAG,"startMeasurementActivity");
         Intent intent = new Intent(getActivity(), MeasurementActivity.class);
@@ -62,6 +78,7 @@ public class MainFragment extends Fragment {
         Log.d(TAG, "onAttach");
     }
 
+    //view
     @Override
     public void onStart() {
         super.onStart();
@@ -75,6 +92,20 @@ public class MainFragment extends Fragment {
         binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
+        ArrayList<LengthData> lengthList = new ArrayList<>();
+
+        LengthData jojo = new LengthData();
+        jojo.setLength("123m");
+        jojo.setId(12);
+        jojo.setTime("2016/08/31");
+        jojo.setTitle("棚からぼたもち");
+
+        lengthList.add(jojo);
+
+        MainListAdapter mainListAdapter = new MainListAdapter(getContext());
+        mainListAdapter.setLengthList(lengthList);
+
+        binding.mainListView.setAdapter(mainListAdapter);
 
 
 
@@ -102,6 +133,7 @@ public class MainFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+        realm.close();
     }
 
 

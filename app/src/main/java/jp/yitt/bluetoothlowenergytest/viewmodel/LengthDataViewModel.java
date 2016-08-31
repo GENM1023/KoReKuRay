@@ -2,9 +2,6 @@ package jp.yitt.bluetoothlowenergytest.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.util.Log;
-
-import org.threeten.bp.LocalDateTime;
 
 import jp.yitt.bluetoothlowenergytest.BR;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
@@ -22,11 +19,21 @@ public class LengthDataViewModel extends BaseObservable{
     }
 
     @Bindable
-    public LocalDateTime getTime() {
+    public String getTitle(){
+        return lengthData.getTitle();
+    }
+
+    public void setTitle(String title){
+        lengthData.setTitle(title);
+        notifyPropertyChanged(BR.title);
+    }
+
+    @Bindable
+    public String getTime() {
         return lengthData.getTime();
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         lengthData.setTime(time);
         notifyPropertyChanged(BR.time);
     }

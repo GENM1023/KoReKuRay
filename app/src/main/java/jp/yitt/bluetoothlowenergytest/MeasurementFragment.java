@@ -23,7 +23,6 @@ public class MeasurementFragment extends Fragment{
         return new MeasurementFragment();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.d(TAG,"onCreateView");
@@ -34,6 +33,7 @@ public class MeasurementFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         binding = FragmentMeasurementBinding.bind(getView());
+        // TODO
         lengthDataViewModel = new LengthDataViewModel(new LengthData());
         binding.setViewmodel(lengthDataViewModel);
 

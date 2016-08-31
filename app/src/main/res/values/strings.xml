@@ -12,4 +12,7 @@
     <string name="menu_info">Info</string>
     <string name="menu_group_other">others</string>
     <string name="menu_wtf">What is KoReKuRay</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

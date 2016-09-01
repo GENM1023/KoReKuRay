@@ -64,7 +64,7 @@ public class MeasurementFragment extends Fragment{
                 //TO DEBUGING
                 Snackbar.make(binding.RootView,sts.toString(), Snackbar.LENGTH_LONG)
                         .show();
-                
+
                 Log.d(TAG, "Handle: " + sts.toString());
                 switch (sts) {
                     case INIT:
@@ -80,6 +80,10 @@ public class MeasurementFragment extends Fragment{
                         break;
                     case BLE_CONNECTED:
                         binding.statusTitleTextView.setText(R.string.measurement_start);
+
+                        //リアルタイム値受信をアクティブ
+                        bluetoothUtil.enableBLENotification();
+
                         break;
                     case BLE_WRITE:
                         break;
@@ -146,6 +150,7 @@ public class MeasurementFragment extends Fragment{
 
         //接続処理
         bluetoothUtil.connectBLE();
+
 
         //test view
         //lengthDataViewModel.setLength("ほげ");

@@ -27,13 +27,28 @@
                 android:textSize="32dp"
                 android:layout_marginTop="58dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="XX m"
-                android:id="@+id/lengthTextView"
-                android:textSize="46dp"/>
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="XX"
+                    android:id="@+id/lengthTextView"
+                    android:textSize="46dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="m"
+                    android:id="@+id/unitTextView"
+                    android:textSize="34dp"/>
+            </LinearLayout>
 
             <ListView
                 android:layout_width="wrap_content"
@@ -64,7 +79,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
-            android:src="@android:drawable/ic_popup_sync"/>
+            android:src="@android:drawable/ic_popup_sync"
+            android:stateListAnimator="@android:drawable/stat_notify_sync_noanim"/>
 
 
     </RelativeLayout>

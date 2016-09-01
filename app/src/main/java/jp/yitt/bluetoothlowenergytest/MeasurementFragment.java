@@ -56,15 +56,10 @@ public class MeasurementFragment extends Fragment{
         return new MeasurementFragment();
     }
 
-    private void setAdapter(){
-        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList);
-        binding.measuredList.setAdapter(arrayAdapter);
-    }
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //setAdapter();
 
 
     }
@@ -76,6 +71,7 @@ public class MeasurementFragment extends Fragment{
         bluetoothInitialize();
         bluetoothHandler();
 
+        //setAdapter();
 
         return inflater.inflate(R.layout.fragment_measurement, container, false);
     }
@@ -103,12 +99,8 @@ public class MeasurementFragment extends Fragment{
 
         //状態をINITに変更
         bluetoothUtil.setStatus(BluetoothUtil.AppState.INIT);
-
         //接続処理
         bluetoothUtil.connectBLE();
-
-        //test view
-        //lengthDataViewModel.setLength("ほげ");
 
 
     }
@@ -139,6 +131,11 @@ public class MeasurementFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+    }
+
+    private void setAdapter(){
+        arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList);
+        binding.measuredList.setAdapter(arrayAdapter);
     }
 
     private void bluetoothInitialize(){
@@ -197,6 +194,7 @@ public class MeasurementFragment extends Fragment{
                         //計測距離viewに代入
                         //if cm/m/inch
                         //binding..setLength(String.valueOf(rt)+R.string.unit_metre);
+                        binding.lengthTextView.setText(rt);
 
                         //Switch Status from Airpressure
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);

@@ -13,4 +13,6 @@
     <string name="menu_wtf">このアプリについて</string>
     <string name="measurement_now">計測中</string>
     <string name="measurement_connecting">接続中</string>
+    <string name="measurement_save">保存</string>
+    <string name="measurement_added_undo">戻す</string>
 </resources>

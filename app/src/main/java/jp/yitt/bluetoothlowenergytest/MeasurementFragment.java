@@ -41,7 +41,7 @@ public class MeasurementFragment extends Fragment{
     ArrayAdapter<String> arrayAdapter;
     static List<String> dataList = new ArrayList<String>();
     /* 計測中の値の判定 */
-    MeasurementType.Type dataType = MeasurementType.Type.LENGTH;
+    MeasurementType dataType;
 
     public static MeasurementFragment newInstance(){
         return new MeasurementFragment();
@@ -52,7 +52,7 @@ public class MeasurementFragment extends Fragment{
         super.onCreate(savedInstanceState);
 
 
-
+        dataType = MeasurementType.INIT;
 
     }
     @Override
@@ -84,6 +84,7 @@ public class MeasurementFragment extends Fragment{
         //画面の点灯制御 常にON 自動で解除
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        dataList.clear();
         setAdapter();
 
 
@@ -121,7 +122,6 @@ public class MeasurementFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
-        dataList.clear();
     }
 
     private void setAdapter(){
@@ -207,6 +207,7 @@ public class MeasurementFragment extends Fragment{
         };
 
     }
+
     public void unitChange(View v){
         Log.d(TAG,"unitChange");
         //Test Method 外部ボタンの代わり
@@ -214,14 +215,70 @@ public class MeasurementFragment extends Fragment{
 
     }
 
+    public void saveDatas(View v){
+        
+
+
+        //getActivity().finish();
+
+    }
+
     private void onCliickedExSwitch(){
         Log.d(TAG,"ExSwitchOnClicked");
+
+        switch (dataType){
+            case INIT:
+                dataType = MeasurementType.LENGTH;
+                binding.saveButton.setEnabled(true);
+                break;
+            case LENGTH:
+                dataType = MeasurementType.AREA;
+                break;
+            case AREA:
+                dataType = MeasurementType.CUBE;
+                break;
+            case CUBE:
+                //データは3個まででよいので
+                //dataType = MeasurementType.OTHER;
+                return;
+            case OTHER:
+                return;
+        }
         //値をListに追加
         dataList.add(binding.lengthTextView.getText().toString());
         //更新通知
         arrayAdapter.notifyDataSetChanged();
-        Log.d(TAG,"DataSetChanged");
+        Log.d(TAG,"DataSetChanged:"+dataType.toString());
 
+        if(getView() != null && dataType != null)Snackbar.make(getView(),R.string.measurement_added_item, Snackbar.LENGTH_LONG)
+                .setAction(R.string.measurement_added_undo, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d(TAG,"DataSetUndo");
+                        switch (dataType){
+                            case INIT:
+                                return;
+                            case LENGTH:
+                                dataType = MeasurementType.INIT;
+                                binding.saveButton.setEnabled(false);
+                                break;
+                            case AREA:
+                                dataType = MeasurementType.LENGTH;
+                                break;
+                            case CUBE:
+                                dataType = MeasurementType.AREA;
+                                break;
+                            case OTHER:
+                                dataType = MeasurementType.CUBE;
+                                break;
+                        }
+                        dataList.remove(dataList.size()-1);
+                        arrayAdapter.notifyDataSetChanged();
+
+
+                    }
+                })
+                .show();
 
 
 

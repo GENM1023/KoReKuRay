@@ -18,4 +18,7 @@
     <string name="measurement_now">Measuring</string>
     <string name="measurement_connecting">Connecting</string>
     <string name="unit_cm" translatable="false">cm</string>
+    <string name="measurement_save">Save</string>
+    <string name="measurement_added_item">1 item added</string>
+    <string name="measurement_added_undo">UNDO</string>
 </resources>

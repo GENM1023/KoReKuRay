@@ -158,7 +158,7 @@ public class MeasurementFragment extends Fragment{
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
 
                 //TO DEBUGING
-                Snackbar.make(binding.RootView,sts.toString(), Snackbar.LENGTH_LONG)
+                Snackbar.make(getView(),sts.toString(), Snackbar.LENGTH_LONG)
                         .show();
 
                 Log.d(TAG, "Handle: " + sts.toString());
@@ -171,6 +171,7 @@ public class MeasurementFragment extends Fragment{
                     case BLE_DISCONNECTED:
                     case BLE_SRV_NOT_FOUND:
                     case BLE_NOTIF_REGISTER_FAILED:
+                        break;
                     case BLE_SCANNING:
                         binding.statusTitleTextView.setText(R.string.measurement_connecting);
                         break;

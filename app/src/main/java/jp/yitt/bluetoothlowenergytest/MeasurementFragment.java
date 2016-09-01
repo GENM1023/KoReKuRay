@@ -33,6 +33,13 @@ public class MeasurementFragment extends Fragment{
     FragmentMeasurementBinding binding;
     LengthDataViewModel lengthDataViewModel;
 
+    /* 計測数カウント */
+    public enum Type{
+        LENGTH,
+        AREA,
+        CUBE
+    }
+
     /* Bluetooth*/
     BluetoothUtil bluetoothUtil;
 
@@ -46,6 +53,14 @@ public class MeasurementFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        Log.d(TAG,"onCreateView");
 
         //Bluetooth Initialize
         bluetoothUtil = new BluetoothUtil(getContext());
@@ -89,6 +104,7 @@ public class MeasurementFragment extends Fragment{
                         break;
                     case BLE_UPDATE_VALUE:
                         binding.statusTitleTextView.setText(R.string.measurement_now);
+
                         //Distance(Length) from Temperature
                         ByteBuffer buff;
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 0, 2);
@@ -102,7 +118,6 @@ public class MeasurementFragment extends Fragment{
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
                         boolean sw = BooleanUtils.toBoolean(buff.getInt());
-                        sw = true;
                         binding.radioButton.setChecked(sw);
 
 
@@ -112,13 +127,6 @@ public class MeasurementFragment extends Fragment{
         };
 
 
-
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        Log.d(TAG,"onCreateView");
 
         return inflater.inflate(R.layout.fragment_measurement, container, false);
     }
@@ -149,7 +157,6 @@ public class MeasurementFragment extends Fragment{
 
         //接続処理
         bluetoothUtil.connectBLE();
-
 
         //test view
         //lengthDataViewModel.setLength("ほげ");

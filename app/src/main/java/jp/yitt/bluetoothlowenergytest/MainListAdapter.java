@@ -26,6 +26,16 @@ public class MainListAdapter extends BaseAdapter{
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public ArrayList<LengthData> getLengthList(){
+
+        int size = getCount();
+        ArrayList<LengthData> lengthList = new ArrayList<LengthData>(size);
+        for (int i=0; i < size; i++){
+            lengthList.add(getItem(i));
+        }
+        return lengthList;
+    }
+
     public void setLengthList(ArrayList<LengthData> lengthList){
         this.lengthList = lengthList;
     }
@@ -38,6 +48,7 @@ public class MainListAdapter extends BaseAdapter{
     public LengthData getItem(int position) {
         return lengthList.get(position);
     }
+
 
     @Override
     public long getItemId(int position) {

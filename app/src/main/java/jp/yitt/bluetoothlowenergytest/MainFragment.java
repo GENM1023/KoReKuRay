@@ -24,6 +24,8 @@ public class MainFragment extends Fragment {
     public static final String TAG = MainFragment.class.getSimpleName();
     FragmentMainBinding binding;
     private Realm realm;
+    ArrayList<LengthData> lengthList;
+    MainListAdapter mainListAdapter;
 
     /*LengthDataViewModel[] lengthDataViewModels ={
             new LengthDataViewModel(new LengthData("データ1","100cm","2016/08/31")),
@@ -37,7 +39,7 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         Log.d(TAG,"onCreate");
-        realm= Realm.getDefaultInstance();
+        //realm= Realm.getDefaultInstance();
 
     }
 
@@ -45,9 +47,13 @@ public class MainFragment extends Fragment {
         return new MainFragment();
     }
 
+
     public void listAdd(View v){
         Log.d(TAG,"listAdd");
 
+        lengthList.add(new LengthData("あああ","いいい","ううう"));
+        mainListAdapter.notifyDataSetChanged();
+        //Realm realm = Realm.getInstance();
 
 
     }
@@ -84,6 +90,10 @@ public class MainFragment extends Fragment {
         super.onStart();
         Log.d(TAG, "onStart");
 
+
+
+
+
         //FloatingActionButton
         binding.actionLength.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionLength.setIcon(R.drawable.scale);
@@ -92,7 +102,7 @@ public class MainFragment extends Fragment {
         binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
-        ArrayList<LengthData> lengthList = new ArrayList<>();
+        lengthList = new ArrayList<>();
 
         LengthData jojo = new LengthData();
         jojo.setLength("123m");
@@ -102,7 +112,7 @@ public class MainFragment extends Fragment {
 
         lengthList.add(jojo);
 
-        MainListAdapter mainListAdapter = new MainListAdapter(getContext());
+        mainListAdapter = new MainListAdapter(getContext());
         mainListAdapter.setLengthList(lengthList);
 
         binding.mainListView.setAdapter(mainListAdapter);

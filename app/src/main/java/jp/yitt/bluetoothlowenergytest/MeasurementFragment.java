@@ -1,6 +1,5 @@
 package jp.yitt.bluetoothlowenergytest;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import org.apache.commons.lang.BooleanUtils;
@@ -25,9 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
-import jp.yitt.bluetoothlowenergytest.model.LengthData;
 import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
-import jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel;
 
 /**
  * Created by genm1023 on 8/31/16.
@@ -37,19 +33,15 @@ public class MeasurementFragment extends Fragment{
     FragmentMeasurementBinding binding;
     //LengthDataViewModel lengthDataViewModel;
 
-    /* 計測タイプ */
-    public enum Type{
-        LENGTH,
-        AREA,
-        CUBE
-    }
 
     /* Bluetooth*/
     BluetoothUtil bluetoothUtil;
 
-    /*計測した値を保持する*/
+    /* 計測した値を保持する */
     ArrayAdapter<String> arrayAdapter;
     static List<String> dataList = new ArrayList<String>();
+    /* 計測中の値の判定 */
+    MeasurementType.Type dataType = MeasurementType.Type.LENGTH;
 
     public static MeasurementFragment newInstance(){
         return new MeasurementFragment();
@@ -61,8 +53,8 @@ public class MeasurementFragment extends Fragment{
 
 
 
-    }
 
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.d(TAG,"onCreateView");
@@ -217,8 +209,9 @@ public class MeasurementFragment extends Fragment{
     }
     public void unitChange(View v){
         Log.d(TAG,"unitChange");
-        //Test Method
+        //Test Method 外部ボタンの代わり
         onCliickedExSwitch();
+
     }
 
     private void onCliickedExSwitch(){
@@ -226,8 +219,11 @@ public class MeasurementFragment extends Fragment{
         //値をListに追加
         dataList.add(binding.lengthTextView.getText().toString());
         //更新通知
-        Log.d(TAG,"DataSetChanged");
         arrayAdapter.notifyDataSetChanged();
+        Log.d(TAG,"DataSetChanged");
+
+
+
 
 
     }

@@ -84,7 +84,7 @@ public class BluetoothUtil {
     }
 
     //状態変更
-    private void setStatus(AppState state)
+    public void setStatus(AppState state)
     {
         Message msg = new Message();
         msg.what = state.ordinal();
@@ -167,7 +167,7 @@ public class BluetoothUtil {
         }
     };
 
-    private void connectBLE()
+    public void connectBLE()
     {
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -184,7 +184,7 @@ public class BluetoothUtil {
         setStatus(AppState.BLE_SCANNING);
     }
 
-    private void disconnectBLE()
+    public void disconnectBLE()
     {
         if (mBtGatt != null) {
             disableBLENotification();
@@ -197,7 +197,7 @@ public class BluetoothUtil {
         }
     }
 
-    private void enableBLENotification()
+    public void enableBLENotification()
     {
         if (mGatt.setCharacteristicNotification(mCharacteristic, true)) {
             BluetoothGattDescriptor desc = mCharacteristic.getDescriptor(UUID.fromString(UUID_CLIENT_CHARACTERISTIC_CONFIG));
@@ -210,7 +210,7 @@ public class BluetoothUtil {
         setStatus(AppState.BLE_NOTIF_REGISTER_FAILED);
     }
 
-    private void disableBLENotification()
+    public void disableBLENotification()
     {
         BluetoothGattDescriptor desc = mCharacteristic.getDescriptor(UUID.fromString(UUID_CLIENT_CHARACTERISTIC_CONFIG));
         desc.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);

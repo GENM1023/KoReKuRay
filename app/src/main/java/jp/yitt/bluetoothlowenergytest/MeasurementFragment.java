@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import org.apache.commons.lang.BooleanUtils;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -43,7 +45,7 @@ public class MeasurementFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        
+
         //Bluetooth Initialize
         bluetoothUtil = new BluetoothUtil(getContext());
         /* Bluetooth関連の初期化 */
@@ -58,10 +60,14 @@ public class MeasurementFragment extends Fragment{
             public void handleMessage(Message msg) {
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
 
+                //TO DEBUGING
+                binding.statusTextView.setText(sts.toString());
+                //lengthDataViewModel.setLength(sts.toString());
+
                 Log.d(TAG, "Handle: " + sts.toString());
                 switch (sts) {
                     case INIT:
-
+                        break;
                     case BLE_SCAN_FAILED:
                     case BLE_CLOSED:
                     case BLE_DISCONNECTED:
@@ -86,7 +92,7 @@ public class MeasurementFragment extends Fragment{
                         //Switch Status from Airpressure
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
-                        int ra = buff.getInt();
+                        boolean hoge = BooleanUtils.toBoolean(buff.getInt());
 
 
 
@@ -128,7 +134,11 @@ public class MeasurementFragment extends Fragment{
         //画面の点灯制御 常にON 自動で解除
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        //状態をINITに変更
+        bluetoothUtil.setStatus(BluetoothUtil.AppState.INIT);
 
+        //接続処理
+        bluetoothUtil.connectBLE();
 
         //test view
         //lengthDataViewModel.setLength("ほげ");
@@ -146,6 +156,10 @@ public class MeasurementFragment extends Fragment{
     public void onStop() {
         super.onStop();
         Log.d(TAG, "onStop");
+
+        //BLE切断処理
+        bluetoothUtil.disconnectBLE();
+
     }
 
     @Override

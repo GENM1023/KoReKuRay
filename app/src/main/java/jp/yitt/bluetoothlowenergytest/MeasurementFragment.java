@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
@@ -61,6 +62,9 @@ public class MeasurementFragment extends Fragment{
         super.onStart();
         Log.d(TAG, "onStart");
 
+        //画面の点灯制御 常にON 自動で解除
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
 
         //Bluetooth Initialize
         bluetoothUtil = new BluetoothUtil(getContext());
@@ -91,10 +95,9 @@ public class MeasurementFragment extends Fragment{
             }
         };
 
-
-
         //test view
         lengthDataViewModel.setLength("ほげ");
+
 
     }
 

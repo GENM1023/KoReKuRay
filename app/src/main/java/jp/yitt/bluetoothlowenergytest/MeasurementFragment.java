@@ -51,7 +51,6 @@ public class MeasurementFragment extends Fragment{
     ArrayAdapter<String> arrayAdapter;
     static List<String> dataList = new ArrayList<String>();
 
-
     public static MeasurementFragment newInstance(){
         return new MeasurementFragment();
     }
@@ -71,17 +70,13 @@ public class MeasurementFragment extends Fragment{
         bluetoothInitialize();
         bluetoothHandler();
 
-        //setAdapter();
-
         return inflater.inflate(R.layout.fragment_measurement, container, false);
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         binding = FragmentMeasurementBinding.bind(getView());
-        // TODO
-        //lengthDataViewModel = new LengthDataViewModel(new LengthData());
-        //binding.setViewmodel(lengthDataViewModel);
+        binding.setFragment(this);
 
     }
     @Override
@@ -96,6 +91,9 @@ public class MeasurementFragment extends Fragment{
 
         //画面の点灯制御 常にON 自動で解除
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        setAdapter();
+
 
         //状態をINITに変更
         bluetoothUtil.setStatus(BluetoothUtil.AppState.INIT);
@@ -131,14 +129,19 @@ public class MeasurementFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+        dataList.clear();
     }
 
     private void setAdapter(){
+        Log.d(TAG,"setAdapter");
+
         arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList);
         binding.measuredList.setAdapter(arrayAdapter);
+
     }
 
     private void bluetoothInitialize(){
+        Log.d(TAG,"bluetoothInitialize");
         //Bluetooth Initialize
         bluetoothUtil = new BluetoothUtil(getContext());
         /* Bluetooth関連の初期化 */
@@ -151,6 +154,7 @@ public class MeasurementFragment extends Fragment{
 
 
     }
+
     private void bluetoothHandler(){
         bluetoothUtil.mHandler = new Handler() {
             @Override
@@ -158,7 +162,7 @@ public class MeasurementFragment extends Fragment{
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
 
                 //TO DEBUGING
-                Snackbar.make(getView(),sts.toString(), Snackbar.LENGTH_LONG)
+                if(getView() != null && sts != null)Snackbar.make(getView(),sts.toString(), Snackbar.LENGTH_LONG)
                         .show();
 
                 Log.d(TAG, "Handle: " + sts.toString());
@@ -201,7 +205,9 @@ public class MeasurementFragment extends Fragment{
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
                         boolean sw = BooleanUtils.toBoolean(buff.getInt());
-
+                        if(sw){
+                            onCliickedExSwitch();
+                        }
 
                         break;
                 }
@@ -209,6 +215,23 @@ public class MeasurementFragment extends Fragment{
         };
 
     }
+    public void unitChange(View v){
+        Log.d(TAG,"unitChange");
+        //Test Method
+        onCliickedExSwitch();
+    }
+
+    private void onCliickedExSwitch(){
+        Log.d(TAG,"ExSwitchOnClicked");
+        //値をListに追加
+        dataList.add(binding.lengthTextView.getText().toString());
+        //更新通知
+        Log.d(TAG,"DataSetChanged");
+        arrayAdapter.notifyDataSetChanged();
+
+
+    }
+
 
 
 

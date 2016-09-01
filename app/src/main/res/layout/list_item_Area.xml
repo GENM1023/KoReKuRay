@@ -9,9 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp">
+        android:layout_height="72dp"
+        android:padding="10dp">
 
-        <ImageButton
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageButton"
@@ -26,14 +27,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
+                android:text="@{model.name}"
                 android:id="@+id/areaDataTitle"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{String.valueOf(model.height)}"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text=""
                 android:id="@+id/areaDataHeight"/>
 
             <LinearLayout
@@ -44,9 +45,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/areaDataLength"
+                    android:text="@{String.valueOf(model.width)}"
+                    android:id="@+id/areaDataWidth"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"/>
 
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
+                    android:text="@{model.time}"
                     android:id="@+id/areaDataDate"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"

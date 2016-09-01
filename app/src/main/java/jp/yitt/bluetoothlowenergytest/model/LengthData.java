@@ -1,7 +1,5 @@
 package jp.yitt.bluetoothlowenergytest.model;
 
-import java.util.Date;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -11,9 +9,9 @@ import io.realm.annotations.PrimaryKey;
 public class LengthData extends RealmObject{
     @PrimaryKey
     private long id;
-    private String title;
+    private String name;
     private double length;
-    private Date time;
+    private String time;
 
     public long getId() {
         return id;
@@ -23,12 +21,12 @@ public class LengthData extends RealmObject{
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getLength() {
@@ -39,11 +37,12 @@ public class LengthData extends RealmObject{
         this.length = length;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -51,4 +50,5 @@ public class LengthData extends RealmObject{
     public String toString() {
         return super.toString();
     }
+
 }

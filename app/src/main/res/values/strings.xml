@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KoReKuRay</string>
+    <string name="app_name" translatable="false">KoReKuLy</string>
     <string name="unit_metre" translatable="false">m</string>
     <string name="unit_inch" translatable="false">inch</string>
     <string name="measurement_start">Start</string>
@@ -26,4 +26,5 @@
     <string name="savedialog_cancel">Cancel</string>
     <string name="measurement_erase">Erase</string>
     <string name="nothing_input_text">please input text.</string>
+    <string name="visibleTime" translatable="false">yyyy/MM/dd HH:mm</string>
 </resources>

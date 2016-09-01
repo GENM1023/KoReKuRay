@@ -15,7 +15,7 @@ public class CubeData extends RealmObject{
     private double height;
     private double width;
     private double length;
-    private Date time;
+    private String time;
 
     public long getId() {
         return id;
@@ -57,17 +57,25 @@ public class CubeData extends RealmObject{
         this.length = length;
     }
 
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "CubeData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", width=" + width +
+                ", length=" + length +
+                ", time='" + time + '\'' +
+                '}';
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
 }

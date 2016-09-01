@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.threeten.bp.LocalDate;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -17,6 +19,5 @@ public class MyApp extends Application{
         AndroidThreeTen.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(this).build();
         Realm.setDefaultConfiguration(realmConfiguration);
-
     }
 }

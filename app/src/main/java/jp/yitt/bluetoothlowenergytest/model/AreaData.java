@@ -15,7 +15,7 @@ public class AreaData extends RealmObject {
     private String name;
     private double height;
     private double width;
-    private Date time;
+    private String time;
 
     public long getId() {
         return id;
@@ -49,17 +49,23 @@ public class AreaData extends RealmObject {
         this.width = width;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "AreaData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", height=" + height +
+                ", width=" + width +
+                ", time='" + time + '\'' +
+                '}';
     }
 
 }

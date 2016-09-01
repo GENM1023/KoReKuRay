@@ -143,7 +143,7 @@ public class MainFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
-        realm.close();
+        //realm.close();
     }
 
 

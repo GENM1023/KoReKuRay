@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
@@ -27,8 +30,12 @@ public class MainFragment extends Fragment {
     /* realm */
     private Realm realm;
     /* Listview */
-    ArrayList<LengthData> lengthList;
-    MainListAdapter mainListAdapter;
+    //ArrayList<Object> objectList;
+    //MainListAdapter mainListAdapter;
+
+    //RecyclerView
+    List<LengthData> items = new ArrayList<>();
+    MainListAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -47,8 +54,15 @@ public class MainFragment extends Fragment {
         Log.d(TAG,"listAdd");
 
         //lengthList.add(new LengthData("あああ","いいい","ううう"));
-        mainListAdapter.notifyDataSetChanged();
+        //mainListAdapter.notifyDataSetChanged();
         //Realm realm = Realm.getInstance();
+
+        LengthData hoge = new LengthData();
+        hoge.setTime("12345");
+        hoge.setName("テスト");
+        hoge.setLength(123.45);
+        items.add(hoge);
+        adapter.notifyDataSetChanged();
 
 
     }
@@ -94,11 +108,21 @@ public class MainFragment extends Fragment {
         binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
-        //ListView
-        lengthList = new ArrayList<>();
-        mainListAdapter = new MainListAdapter(getContext());
-        mainListAdapter.setLengthList(lengthList);
-        binding.mainListView.setAdapter(mainListAdapter);
+
+        items.clear();
+
+        LengthData hoge = new LengthData();
+        hoge.setTime("12345");
+        hoge.setName("テスト");
+        hoge.setLength(123.45);
+        items.add(hoge);
+        adapter = new MainListAdapter(items);
+        //縦方向の標準リストであることを指定
+        binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.mainRecyclerView.setAdapter(adapter);
+        //mainListAdapter = new MainListAdapter(getContext(), objectList);
+        //mainListAdapter.setLengthList(lengthList);
+        //binding.mainListView.setAdapter(mainListAdapter);
 
 
 

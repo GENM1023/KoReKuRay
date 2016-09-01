@@ -1,5 +1,7 @@
 package jp.yitt.bluetoothlowenergytest;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,9 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
+import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 import jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel;
 
 /**
@@ -19,6 +23,13 @@ public class MeasurementFragment extends Fragment{
     public static final String TAG = MeasurementFragment.class.getSimpleName();
     FragmentMeasurementBinding binding;
     LengthDataViewModel lengthDataViewModel;
+
+    /* Bluetooth*/
+    BluetoothUtil bluetoothUtil;
+
+
+
+
     public static MeasurementFragment newInstance(){
         return new MeasurementFragment();
     }
@@ -48,6 +59,18 @@ public class MeasurementFragment extends Fragment{
         super.onStart();
         Log.d(TAG, "onStart");
 
+
+        //Bluetooth Initialize
+        bluetoothUtil = new BluetoothUtil(getContext());
+        /* Bluetooth関連の初期化 */
+        bluetoothUtil.mBtManager = (BluetoothManager)getContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        bluetoothUtil.mBtAdapter = bluetoothUtil.mBtManager.getAdapter();
+        if ((bluetoothUtil.mBtAdapter == null) || !bluetoothUtil.mBtAdapter.isEnabled()) {
+            Toast.makeText(getActivity().getApplicationContext(), "Warning: Bluetooth Disabled.", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
+        }
+
+        //test view
         lengthDataViewModel.setLength("ほげ");
 
     }
@@ -74,5 +97,9 @@ public class MeasurementFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+    }
+
+    private void bleInit(){
+
     }
 }

@@ -10,9 +10,9 @@ import jp.yitt.bluetoothlowenergytest.model.LengthData;
  * Created by genm1023 on 8/30/16.
  */
 public class LengthDataViewModel extends BaseObservable{
+
     private final String TAG = LengthDataViewModel.class.getSimpleName();
     private final LengthData lengthData;
-
 
     public LengthDataViewModel(LengthData model){
         this.lengthData = model;

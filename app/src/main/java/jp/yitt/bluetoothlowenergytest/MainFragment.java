@@ -16,16 +16,23 @@ import java.util.ArrayList;
 import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
+import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 
 /**
  * Created by genm1023 on 8/31/16.
  */
 public class MainFragment extends Fragment {
     public static final String TAG = MainFragment.class.getSimpleName();
+    /* data binding */
     FragmentMainBinding binding;
+    /* realm */
     private Realm realm;
+    /* Listview */
     ArrayList<LengthData> lengthList;
     MainListAdapter mainListAdapter;
+
+
+
 
     /*LengthDataViewModel[] lengthDataViewModels ={
             new LengthDataViewModel(new LengthData("データ1","100cm","2016/08/31")),
@@ -91,9 +98,6 @@ public class MainFragment extends Fragment {
         Log.d(TAG, "onStart");
 
 
-
-
-
         //FloatingActionButton
         binding.actionLength.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionLength.setIcon(R.drawable.scale);
@@ -102,19 +106,16 @@ public class MainFragment extends Fragment {
         binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
+        //ListView
         lengthList = new ArrayList<>();
-
         LengthData jojo = new LengthData();
         jojo.setLength("123m");
         jojo.setId(12);
         jojo.setTime("2016/08/31");
         jojo.setTitle("棚からぼたもち");
-
         lengthList.add(jojo);
-
         mainListAdapter = new MainListAdapter(getContext());
         mainListAdapter.setLengthList(lengthList);
-
         binding.mainListView.setAdapter(mainListAdapter);
 
 

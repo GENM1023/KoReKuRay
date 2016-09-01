@@ -4,6 +4,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -69,6 +71,27 @@ public class MeasurementFragment extends Fragment{
             Toast.makeText(getActivity().getApplicationContext(), "Warning: Bluetooth Disabled.", Toast.LENGTH_SHORT).show();
             getActivity().finish();
         }
+        bluetoothUtil.mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
+                switch (sts) {
+                    case INIT:
+                    case BLE_SCAN_FAILED:
+                    case BLE_CLOSED:
+                    case BLE_DISCONNECTED:
+                    case BLE_SRV_NOT_FOUND:
+                    case BLE_NOTIF_REGISTER_FAILED:
+                    case BLE_SCANNING:
+                    case BLE_CONNECTED:
+                    case BLE_WRITE:
+                    case BLE_UPDATE_VALUE:
+                        break;
+                }
+            }
+        };
+
+
 
         //test view
         lengthDataViewModel.setLength("ほげ");

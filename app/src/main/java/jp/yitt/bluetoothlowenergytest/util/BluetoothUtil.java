@@ -58,7 +58,7 @@ public class BluetoothUtil {
     public Handler mHandler;
 
     /* State */
-    private enum AppState {
+    public enum AppState {
         INIT,
         BLE_SCANNING,
         BLE_SCAN_FAILED,

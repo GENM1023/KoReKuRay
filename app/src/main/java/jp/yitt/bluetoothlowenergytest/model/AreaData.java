@@ -6,13 +6,15 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by genm1023 on 8/30/16.
+ * Created by genm1023 on 9/1/16.
  */
-public class LengthData extends RealmObject{
+public class AreaData extends RealmObject {
+
     @PrimaryKey
     private long id;
-    private String title;
-    private double length;
+    private String name;
+    private double height;
+    private double width;
     private Date time;
 
     public long getId() {
@@ -23,20 +25,28 @@ public class LengthData extends RealmObject{
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getLength() {
-        return length;
+    public double getHeight() {
+        return height;
     }
 
-    public void setLength(double length) {
-        this.length = length;
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 
     public Date getTime() {
@@ -51,4 +61,5 @@ public class LengthData extends RealmObject{
     public String toString() {
         return super.toString();
     }
+
 }

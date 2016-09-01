@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.commons.lang.BooleanUtils;
@@ -35,8 +36,6 @@ import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 public class MeasurementFragment extends Fragment{
     public static final String TAG = MeasurementFragment.class.getSimpleName();
     FragmentMeasurementBinding binding;
-    //LengthDataViewModel lengthDataViewModel;
-
 
     /* Bluetooth*/
     BluetoothUtil bluetoothUtil;
@@ -231,21 +230,28 @@ public class MeasurementFragment extends Fragment{
     }
     //DialogDataSavingBinding sbinding;
 
-    public void saveDatas(View v){
+    public void saveDatas(final View v){
         Log.d(TAG,"saveDatas");
-        //sbinding = DialogDataSavingBinding.bind(getView());
-
+        final View dialogView = getActivity().getLayoutInflater().inflate(R.layout.dialog_data_saving, null);
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.savedialog_title)
-                .setView(R.layout.dialog_data_saving)
+                .setView(dialogView)
                 .setPositiveButton(R.string.savedialog_saving,new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
 
-                        /*if(!sbinding.savingName.getText().toString().isEmpty()){
-                            String hoge = sbinding.savingName.getText().toString();
-                        }*/
+                        EditText editText = (EditText)dialogView.findViewById(R.id.savingNameEditText);
+
+                        if(editText.getText().equals(null)){
+
+                            Snackbar.make(getView(),R.string.nothing_input_text, Snackbar.LENGTH_LONG)
+                                    .show();
+                            return;
+                        }
+                        String testss = editText.getText().toString();
+
+
 
                         //画面を破棄
                         getActivity().finish();

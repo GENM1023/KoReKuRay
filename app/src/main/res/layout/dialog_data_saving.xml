@@ -21,7 +21,7 @@
                 />
 
             <EditText
-                android:id="@+id/savingName"
+                android:id="@+id/savingNameEditText"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

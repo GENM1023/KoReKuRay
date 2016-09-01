@@ -25,4 +25,5 @@
     <string name="savedialog_saving">Save</string>
     <string name="savedialog_cancel">Cancel</string>
     <string name="measurement_erase">Erase</string>
+    <string name="nothing_input_text">please input text.</string>
 </resources>

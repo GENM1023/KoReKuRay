@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
-import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 
 /**
  * Created by genm1023 on 8/31/16.
@@ -47,7 +46,7 @@ public class MainFragment extends Fragment {
     public void listAdd(View v){
         Log.d(TAG,"listAdd");
 
-        lengthList.add(new LengthData("あああ","いいい","ううう"));
+        //lengthList.add(new LengthData("あああ","いいい","ううう"));
         mainListAdapter.notifyDataSetChanged();
         //Realm realm = Realm.getInstance();
 
@@ -97,12 +96,6 @@ public class MainFragment extends Fragment {
 
         //ListView
         lengthList = new ArrayList<>();
-        LengthData jojo = new LengthData();
-        jojo.setLength("123m");
-        jojo.setId(12);
-        jojo.setTime("2016/08/31");
-        jojo.setTitle("棚からぼたもち");
-        lengthList.add(jojo);
         mainListAdapter = new MainListAdapter(getContext());
         mainListAdapter.setLengthList(lengthList);
         binding.mainListView.setAdapter(mainListAdapter);

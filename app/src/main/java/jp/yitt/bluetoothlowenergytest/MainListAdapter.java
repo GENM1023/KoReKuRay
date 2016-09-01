@@ -67,7 +67,6 @@ public class MainListAdapter extends BaseAdapter{
             binding = (ListItemLengthBinding)convertView.getTag();
 
         }
-        binding.setModel(getItem(position));
 
         return convertView;
     }

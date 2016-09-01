@@ -13,23 +13,28 @@ public class LengthDataRO extends RealmObject{
     private String length;
     private String time;
 
-    public LengthDataRO(String title, String length, String time){
-        this.title = title;
-        this.length = length;
-        this.time = time;
-    }
-    public LengthDataRO(){
-
+    public long getId() {
+        return id;
     }
 
-    public long getId(){return id;}
-    public void setId(long id){
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getTitle(){return title;}
-    public void setTitle(String title){
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    public void setLength(String length) {
+        this.length = length;
     }
 
     public String getTime() {
@@ -37,14 +42,11 @@ public class LengthDataRO extends RealmObject{
     }
 
     public void setTime(String time) {
-        this.time = time.toString();
+        this.time = time;
     }
 
-    public String getLength(){return length;}
-
-    public void setLength(String length){
-        this.length = length;
+    @Override
+    public String toString() {
+        return super.toString();
     }
-
-
 }

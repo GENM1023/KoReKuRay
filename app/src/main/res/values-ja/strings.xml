@@ -20,4 +20,5 @@
     <string name="savedialog_cancel">キャンセル</string>
     <string name="measurement_added_item">値が追加されました．</string>
     <string name="measurement_erase">消去</string>
+    <string name="nothing_input_text">値を入力してください</string>
 </resources>

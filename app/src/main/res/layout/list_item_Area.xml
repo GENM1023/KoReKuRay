@@ -4,13 +4,12 @@
     <data>
         <variable
             name="model"
-            type="jp.yitt.bluetoothlowenergytest.model.LengthData"/>
+            type="jp.yitt.bluetoothlowenergytest.model.AreaData"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        >
+        android:layout_height="72dp">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -28,7 +27,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text=""
-                android:id="@+id/lengthDataTitle"/>
+                android:id="@+id/areaDataTitle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/areaDataHeight"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -40,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/lengthDataLength"
+                    android:id="@+id/areaDataLength"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"/>
 
@@ -54,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=""
-                    android:id="@+id/lengthDataDate"
+                    android:id="@+id/areaDataDate"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:gravity="bottom|right"/>

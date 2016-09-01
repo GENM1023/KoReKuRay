@@ -5,9 +5,6 @@
         <variable
             name="fragment"
             type="jp.yitt.bluetoothlowenergytest.MeasurementFragment"/>
-        <variable
-            name="viewmodel"
-            type="jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel"/>
     </data>
     <RelativeLayout
         android:id="@+id/RootView"
@@ -15,45 +12,59 @@
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@{viewmodel.getLength}"
-            android:id="@+id/textView3"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="46dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="計測"
-            android:id="@+id/statusTitleTextView"
-            android:textSize="32dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="58dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="計測"
+                android:id="@+id/statusTitleTextView"
+                android:textSize="32dp"
+                android:layout_marginTop="58dp"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="スイッチ"
-            android:id="@+id/radioButton"
-            android:layout_marginBottom="53dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="XX m"
+                android:id="@+id/lengthTextView"
+                android:textSize="46dp"/>
 
-        <TextView
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:id="@+id/measuredList"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Button"
+                    android:id="@+id/button2"
+                    android:clickable="false"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="XX m"
-            android:id="@+id/textView4"
-            android:textAlignment="center"
-            android:layout_below="@+id/statusTitleTextView"
-            android:layout_centerHorizontal="true"/>
+            android:id="@+id/unitChangeButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@android:drawable/ic_popup_sync"/>
 
 
     </RelativeLayout>

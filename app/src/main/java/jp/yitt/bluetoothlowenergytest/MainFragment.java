@@ -31,17 +31,6 @@ public class MainFragment extends Fragment {
     ArrayList<LengthData> lengthList;
     MainListAdapter mainListAdapter;
 
-
-
-
-    /*LengthDataViewModel[] lengthDataViewModels ={
-            new LengthDataViewModel(new LengthData("データ1","100cm","2016/08/31")),
-            new LengthDataViewModel(new LengthData("データ2","120cm","2016/08/30")),
-            new LengthDataViewModel(new LengthData("データ3","203cm","2016/08/29")),
-            new LengthDataViewModel(new LengthData("データ4","40cm","2016/08/28")),
-            new LengthDataViewModel(new LengthData("データ5","50cm","2016/08/27"))
-    };*/
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

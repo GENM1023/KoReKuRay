@@ -159,7 +159,7 @@ public class MeasurementFragment extends Fragment{
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
 
                 //TO DEBUGING
-                if(getView() != null && sts != null)Snackbar.make(getView(),sts.toString(), Snackbar.LENGTH_LONG)
+                if(getView() != null && sts != null && !sts.equals(BluetoothUtil.AppState.BLE_UPDATE_VALUE))Snackbar.make(getView(),sts.toString(), Snackbar.LENGTH_LONG)
                         .show();
 
                 Log.d(TAG, "Handle: " + sts.toString());
@@ -192,18 +192,18 @@ public class MeasurementFragment extends Fragment{
                         ByteBuffer buff;
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 0, 2);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
-                        short rt = buff.getShort();
+                        int rt = buff.getInt();
                         //計測距離viewに代入
                         //if cm/m/inch
                         //binding..setLength(String.valueOf(rt)+R.string.unit_metre);
-                        binding.lengthTextView.setText(rt);
+                        binding.lengthTextView.setText(String.valueOf(rt));
 
                         //Switch Status from Airpressure
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
                         boolean sw = BooleanUtils.toBoolean(buff.getInt());
                         if(sw){
-                            onCliickedExSwitch();
+                            //onCliickedExSwitch();
                         }
 
                         break;

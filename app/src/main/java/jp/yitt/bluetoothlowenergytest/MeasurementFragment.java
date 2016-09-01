@@ -41,34 +41,9 @@ public class MeasurementFragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        Log.d(TAG,"onCreateView");
-
-        return inflater.inflate(R.layout.fragment_measurement, container, false);
-    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState){
-        super.onActivityCreated(savedInstanceState);
-        binding = FragmentMeasurementBinding.bind(getView());
-        // TODO
-        lengthDataViewModel = new LengthDataViewModel(new LengthData());
-        binding.setViewmodel(lengthDataViewModel);
-
-    }
-    @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
-        Log.d(TAG, "onAttach");
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart");
-
-        //画面の点灯制御 常にON 自動で解除
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        
         //Bluetooth Initialize
         bluetoothUtil = new BluetoothUtil(getContext());
         /* Bluetooth関連の初期化 */
@@ -82,8 +57,11 @@ public class MeasurementFragment extends Fragment{
             @Override
             public void handleMessage(Message msg) {
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
+
+                Log.d(TAG, "Handle: " + sts.toString());
                 switch (sts) {
                     case INIT:
+
                     case BLE_SCAN_FAILED:
                     case BLE_CLOSED:
                     case BLE_DISCONNECTED:
@@ -117,6 +95,41 @@ public class MeasurementFragment extends Fragment{
             }
         };
 
+
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        Log.d(TAG,"onCreateView");
+
+        return inflater.inflate(R.layout.fragment_measurement, container, false);
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        binding = FragmentMeasurementBinding.bind(getView());
+        // TODO
+        lengthDataViewModel = new LengthDataViewModel(new LengthData());
+        binding.setViewmodel(lengthDataViewModel);
+
+    }
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        Log.d(TAG, "onAttach");
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+
+        //画面の点灯制御 常にON 自動で解除
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+
         //test view
         //lengthDataViewModel.setLength("ほげ");
 
@@ -147,7 +160,4 @@ public class MeasurementFragment extends Fragment{
         Log.d(TAG, "onDestroy");
     }
 
-    private void bleInit(){
-
-    }
 }

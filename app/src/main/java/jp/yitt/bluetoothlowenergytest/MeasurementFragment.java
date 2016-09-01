@@ -25,6 +25,7 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.yitt.bluetoothlowenergytest.databinding.DialogDataSavingBinding;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
 import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 
@@ -72,6 +73,7 @@ public class MeasurementFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
         binding = FragmentMeasurementBinding.bind(getView());
         binding.setFragment(this);
+
 
     }
     @Override
@@ -213,7 +215,7 @@ public class MeasurementFragment extends Fragment{
 
     public void unitChange(View v){
         Log.d(TAG,"unitChange");
-        //Test Method 外部ボタンの代わり
+        //TODO Test Method 外部ボタンの代わり
         onCliickedExSwitch();
 
     }
@@ -223,10 +225,16 @@ public class MeasurementFragment extends Fragment{
         dataList.clear();
         arrayAdapter.notifyDataSetChanged();
         dataType = MeasurementType.INIT;
+        binding.saveButton.setEnabled(false);
+        binding.eraseButton.setEnabled(false);
+
     }
+    //DialogDataSavingBinding sbinding;
 
     public void saveDatas(View v){
         Log.d(TAG,"saveDatas");
+        //sbinding = DialogDataSavingBinding.bind(getView());
+
 
         new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.savedialog_title)
@@ -234,7 +242,13 @@ public class MeasurementFragment extends Fragment{
                 .setPositiveButton(R.string.savedialog_saving,new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        //
+
+                        /*if(!sbinding.savingName.getText().toString().isEmpty()){
+                            String hoge = sbinding.savingName.getText().toString();
+                        }*/
+
+                        //画面を破棄
+                        getActivity().finish();
 
                     }
                 })
@@ -243,7 +257,7 @@ public class MeasurementFragment extends Fragment{
 
 
 
-        //getActivity().finish();
+
 
     }
 

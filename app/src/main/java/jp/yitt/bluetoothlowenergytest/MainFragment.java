@@ -23,7 +23,7 @@ import jp.yitt.bluetoothlowenergytest.model.LengthData;
 /**
  * Created by genm1023 on 8/31/16.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements OnRecyclerListener {
     public static final String TAG = MainFragment.class.getSimpleName();
     /* data binding */
     FragmentMainBinding binding;
@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
     //RecyclerView
     List<LengthData> items = new ArrayList<>();
     MainListAdapter adapter;
+    View mView;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -74,18 +75,41 @@ public class MainFragment extends Fragment {
         startActivityForResult(intent,1);
 
     }
+    @Override
+    public void onRecyclerClicked(View v, int position){
+        Log.d(TAG,"onRecyclerClicked:"+position);
+
+
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         binding = FragmentMainBinding.bind(getView());
         binding.setFragment(this);
+
+
+        items.clear();
+
+        LengthData hoge = new LengthData();
+        hoge.setTime("12345");
+        hoge.setName("テスト");
+        hoge.setLength(123.45);
+        items.add(hoge);
+
+        adapter = new MainListAdapter(items);
+
+        binding.mainRecyclerView.setAdapter(adapter);
+
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Log.d(TAG,"onCreateView");
+        mView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        return inflater.inflate(R.layout.fragment_main, container, false);
+
+        return mView;
     }
     @Override
     public void onAttach(Context context){
@@ -93,7 +117,6 @@ public class MainFragment extends Fragment {
         Log.d(TAG, "onAttach");
     }
 
-    //view
     @Override
     public void onStart() {
         super.onStart();
@@ -108,18 +131,9 @@ public class MainFragment extends Fragment {
         binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
-
-        items.clear();
-
-        LengthData hoge = new LengthData();
-        hoge.setTime("12345");
-        hoge.setName("テスト");
-        hoge.setLength(123.45);
-        items.add(hoge);
-        adapter = new MainListAdapter(items);
         //縦方向の標準リストであることを指定
         binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.mainRecyclerView.setAdapter(adapter);
+
         //mainListAdapter = new MainListAdapter(getContext(), objectList);
         //mainListAdapter.setLengthList(lengthList);
         //binding.mainListView.setAdapter(mainListAdapter);

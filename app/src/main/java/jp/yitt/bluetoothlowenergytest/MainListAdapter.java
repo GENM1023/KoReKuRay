@@ -32,6 +32,8 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         holder.listItemLengthBinding.executePendingBindings();
         //holder.listItemLengthBinding.notifyPropertyChanged(position);
 
+
+
     }
 
     @Override

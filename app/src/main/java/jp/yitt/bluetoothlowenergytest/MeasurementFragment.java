@@ -96,8 +96,7 @@ public class MeasurementFragment extends Fragment{
                         short rt = buff.getShort();
                         //計測距離viewに代入
                         //if cm/m/inch
-                        //lengthDataViewModel.setLength(String.format("%f m",(float)));
-                        lengthDataViewModel.setLength(String.valueOf(rt));
+                        lengthDataViewModel.setLength(String.valueOf(rt)+R.string.unit_metre);
 
                         //Switch Status from Airpressure
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);

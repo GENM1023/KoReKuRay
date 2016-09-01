@@ -15,4 +15,7 @@
     <string name="measurement_connecting">接続中</string>
     <string name="measurement_save">保存</string>
     <string name="measurement_added_undo">戻す</string>
+    <string name="savedialog_title">名前をつけて保存</string>
+    <string name="savedialog_saving">保存</string>
+    <string name="savedialog_cancel">キャンセル</string>
 </resources>

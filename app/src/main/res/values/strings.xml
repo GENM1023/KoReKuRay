@@ -21,4 +21,7 @@
     <string name="measurement_save">Save</string>
     <string name="measurement_added_item">1 item added</string>
     <string name="measurement_added_undo">UNDO</string>
+    <string name="savedialog_title">Saving</string>
+    <string name="savedialog_saving">Save</string>
+    <string name="savedialog_cancel">Cancel</string>
 </resources>

@@ -216,7 +216,7 @@ public class MeasurementFragment extends Fragment{
     }
 
     public void saveDatas(View v){
-        
+
 
 
         //getActivity().finish();

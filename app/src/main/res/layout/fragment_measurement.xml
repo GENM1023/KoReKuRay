@@ -65,6 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurement_save"
+                    android:onClick="@{fragment::saveDatas}"
                     android:id="@+id/save_button"
                     android:clickable="false"
                     android:enabled="false"/>
@@ -79,7 +80,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
-            android:onClick="@{fragment.unitChange}"
+            android:onClick="@{fragment::unitChange}"
             android:src="@android:drawable/sym_def_app_icon"
             />
 

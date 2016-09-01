@@ -1,12 +1,15 @@
 package jp.yitt.bluetoothlowenergytest;
 
+import android.app.Dialog;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -215,7 +218,28 @@ public class MeasurementFragment extends Fragment{
 
     }
 
+    public void eraseDatas(View v){
+        Log.d(TAG,"eraseDatas");
+        dataList.clear();
+        arrayAdapter.notifyDataSetChanged();
+        dataType = MeasurementType.INIT;
+    }
+
     public void saveDatas(View v){
+        Log.d(TAG,"saveDatas");
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.savedialog_title)
+                .setView(R.layout.dialog_data_saving)
+                .setPositiveButton(R.string.savedialog_saving,new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        //
+
+                    }
+                })
+                .setNegativeButton(R.string.savedialog_cancel,null)
+                .show();
 
 
 
@@ -230,6 +254,7 @@ public class MeasurementFragment extends Fragment{
             case INIT:
                 dataType = MeasurementType.LENGTH;
                 binding.saveButton.setEnabled(true);
+                binding.eraseButton.setEnabled(true);
                 break;
             case LENGTH:
                 dataType = MeasurementType.AREA;
@@ -261,6 +286,7 @@ public class MeasurementFragment extends Fragment{
                             case LENGTH:
                                 dataType = MeasurementType.INIT;
                                 binding.saveButton.setEnabled(false);
+                                binding.eraseButton.setEnabled(false);
                                 break;
                             case AREA:
                                 dataType = MeasurementType.LENGTH;

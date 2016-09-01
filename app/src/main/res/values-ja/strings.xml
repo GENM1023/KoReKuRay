@@ -18,4 +18,6 @@
     <string name="savedialog_title">名前をつけて保存</string>
     <string name="savedialog_saving">保存</string>
     <string name="savedialog_cancel">キャンセル</string>
+    <string name="measurement_added_item">値が追加されました．</string>
+    <string name="measurement_erase">消去</string>
 </resources>

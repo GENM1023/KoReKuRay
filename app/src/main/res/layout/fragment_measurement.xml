@@ -59,7 +59,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical|center_horizontal">
+                android:gravity="center|center_vertical"
+                android:layout_marginBottom="30dp">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -68,6 +69,14 @@
                     android:onClick="@{fragment::saveDatas}"
                     android:id="@+id/save_button"
                     android:clickable="false"
+                    android:enabled="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/measurement_erase"
+                    android:onClick="@{fragment::eraseDatas}"
+                    android:id="@+id/erase_button"
                     android:enabled="false"/>
             </LinearLayout>
 

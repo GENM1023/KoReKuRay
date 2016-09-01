@@ -10,18 +10,10 @@
             type="jp.yitt.bluetoothlowenergytest.viewmodel.LengthDataViewModel"/>
     </data>
     <RelativeLayout
+        android:id="@+id/RootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="58dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,20 +30,30 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="計測"
-            android:id="@+id/textView4"
+            android:id="@+id/statusTitleTextView"
             android:textSize="32dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="58dp"/>
 
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="スイッチ"
+            android:id="@+id/radioButton"
+            android:layout_marginBottom="53dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Status"
-            android:id="@+id/statusTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"/>
+            android:text="．"
+            android:id="@+id/textView4"
+            android:textAlignment="center"
+            android:layout_below="@+id/statusTitleTextView"
+            android:layout_centerHorizontal="true"/>
 
 
     </RelativeLayout>

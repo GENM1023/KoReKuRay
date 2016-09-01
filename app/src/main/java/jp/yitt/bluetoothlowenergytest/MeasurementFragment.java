@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,12 +62,13 @@ public class MeasurementFragment extends Fragment{
                 BluetoothUtil.AppState sts = BluetoothUtil.AppState.values()[msg.what];
 
                 //TO DEBUGING
-                binding.statusTextView.setText(sts.toString());
-                //lengthDataViewModel.setLength(sts.toString());
-
+                Snackbar.make(binding.RootView,sts.toString(), Snackbar.LENGTH_LONG)
+                        .show();
+                
                 Log.d(TAG, "Handle: " + sts.toString());
                 switch (sts) {
                     case INIT:
+
                         break;
                     case BLE_SCAN_FAILED:
                     case BLE_CLOSED:
@@ -74,11 +76,15 @@ public class MeasurementFragment extends Fragment{
                     case BLE_SRV_NOT_FOUND:
                     case BLE_NOTIF_REGISTER_FAILED:
                     case BLE_SCANNING:
+                        binding.statusTitleTextView.setText(R.string.measurement_connecting);
+                        break;
                     case BLE_CONNECTED:
+                        binding.statusTitleTextView.setText(R.string.measurement_start);
+                        break;
                     case BLE_WRITE:
                         break;
                     case BLE_UPDATE_VALUE:
-
+                        binding.statusTitleTextView.setText(R.string.measurement_now);
                         //Distance(Length) from Temperature
                         ByteBuffer buff;
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 0, 2);
@@ -92,8 +98,9 @@ public class MeasurementFragment extends Fragment{
                         //Switch Status from Airpressure
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
-                        boolean hoge = BooleanUtils.toBoolean(buff.getInt());
-
+                        boolean sw = BooleanUtils.toBoolean(buff.getInt());
+                        sw = true;
+                        binding.radioButton.setChecked(sw);
 
 
                         break;

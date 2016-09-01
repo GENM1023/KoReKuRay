@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
 import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
@@ -89,14 +92,33 @@ public class MeasurementFragment extends Fragment{
                     case BLE_SCANNING:
                     case BLE_CONNECTED:
                     case BLE_WRITE:
+                        break;
                     case BLE_UPDATE_VALUE:
+
+                        //Distance(Length) from Temperature
+                        ByteBuffer buff;
+                        buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 0, 2);
+                        buff.order(ByteOrder.LITTLE_ENDIAN);
+                        short rt = buff.getShort();
+                        //計測距離viewに代入
+                        //if cm/m/inch
+                        //lengthDataViewModel.setLength(String.format("%f m",(float)));
+                        lengthDataViewModel.setLength(String.valueOf(rt));
+
+                        //Switch Status from Airpressure
+                        buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
+                        buff.order(ByteOrder.LITTLE_ENDIAN);
+                        int ra = buff.getInt();
+
+
+
                         break;
                 }
             }
         };
 
         //test view
-        lengthDataViewModel.setLength("ほげ");
+        //lengthDataViewModel.setLength("ほげ");
 
 
     }

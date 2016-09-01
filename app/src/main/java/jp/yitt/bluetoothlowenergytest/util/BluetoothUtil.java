@@ -47,7 +47,7 @@ public class BluetoothUtil {
     private static final String TAG = BluetoothUtil.class.getSimpleName();
 
     /* recieve data */
-    private byte[] mRecvValue;
+    public byte[] mRecvValue;
 
     /* メンバ変数 */
     public BluetoothManager mBtManager;

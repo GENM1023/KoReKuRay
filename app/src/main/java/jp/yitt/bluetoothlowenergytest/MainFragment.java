@@ -76,6 +76,25 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
         Log.d(TAG,"startMeasurementActivity");
         Intent intent = new Intent(getActivity(), MeasurementActivity.class);
 
+        startActivityForResult(intent,10);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode != -1){
+            if(requestCode == 10){
+                //data.getData().
+            }
+        }
+    }
+
+    public void startSuggestActivity(View v){
+        Log.d(TAG,"startSuggestActivity");
+        Intent intent = new Intent(getActivity(), SuggestActivity.class);
+
         startActivityForResult(intent,1);
 
     }
@@ -101,9 +120,9 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
         hoge.setLength(123.45);
         items.add(hoge);
 
-        adapter = new MainListAdapter(items);
+        //adapter = new MainListAdapter(items);
 
-        binding.mainRecyclerView.setAdapter(adapter);
+        //binding.mainRecyclerView.setAdapter(adapter);
 
 
     }
@@ -132,8 +151,6 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
         binding.actionLength.setIcon(R.drawable.scale);
         binding.actionArea.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionArea.setIcon(R.drawable.area);
-        binding.actionAddlist.setSize(FloatingActionButton.SIZE_MINI);
-        binding.actionAddlist.setIcon(R.drawable.ic_add_white_24dp);
 
         //縦方向の標準リストであることを指定
         binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

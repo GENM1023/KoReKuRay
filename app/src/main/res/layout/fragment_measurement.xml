@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="m"
+                    android:text="cm"
                     android:id="@+id/unitTextView"
                     android:textSize="34dp"/>
             </LinearLayout>

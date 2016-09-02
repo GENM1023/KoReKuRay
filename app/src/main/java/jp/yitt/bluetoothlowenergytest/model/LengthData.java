@@ -7,19 +7,9 @@ import io.realm.annotations.PrimaryKey;
  * Created by genm1023 on 8/30/16.
  */
 public class LengthData extends RealmObject{
-    @PrimaryKey
-    private long id;
     private String name;
     private double length;
     private String time;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

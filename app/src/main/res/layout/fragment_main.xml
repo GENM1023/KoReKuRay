@@ -42,28 +42,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginEnd="16dp">
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/action_realm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="@color/bluegrey_900"
-                app:fab_title="テスト:RealmViewer"
-
-                app:fab_colorPressed="@color/blue_700"/>
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/action_addlist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="@color/pink_500"
-                app:fab_title="テスト:リスト追加"
-                app:fab_colorPressed="@color/pink_700"/>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/action_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/amber_500"
+                android:onClick="@{fragment::startSuggestActivity}"
                 app:fab_title="@string/fab_item_suggest"
                 app:fab_colorPressed="@color/amber_700"/>
 

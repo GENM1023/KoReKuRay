@@ -44,6 +44,8 @@ import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
  */
 public class MeasurementFragment extends Fragment{
     public static final String TAG = MeasurementFragment.class.getSimpleName();
+
+    boolean switchTouched = false;
     FragmentMeasurementBinding binding;
 
     /* Bluetooth*/
@@ -200,7 +202,7 @@ public class MeasurementFragment extends Fragment{
                         ByteBuffer buff;
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 0, 2);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
-                        int rt = buff.getInt();
+                        int rt = buff.getShort();
                         //計測距離viewに代入
                         //if cm/m/inch
                         //binding..setLength(String.valueOf(rt)+R.string.unit_metre);
@@ -210,10 +212,14 @@ public class MeasurementFragment extends Fragment{
                         buff = ByteBuffer.wrap(bluetoothUtil.mRecvValue, 2, 4);
                         buff.order(ByteOrder.LITTLE_ENDIAN);
                         boolean sw = BooleanUtils.toBoolean(buff.getInt());
-                        if(sw){
-                            //onCliickedExSwitch();
+                        if(sw && !switchTouched){
+                            onCliickedExSwitch();
+                            switchTouched = true;
+                        }else if(sw == false){
+                            if(switchTouched){
+                                switchTouched = false;
+                            }
                         }
-
                         break;
                 }
             }
@@ -276,7 +282,8 @@ public class MeasurementFragment extends Fragment{
                                 lengthDatas.size();
 
                                 realm.beginTransaction();
-                                realm.copyToRealmOrUpdate(lengthData);
+                                realm.copyToRealm(lengthData);
+                                //realm.copyToRealmOrUpdate(lengthData);
                                 realm.commitTransaction();
 
                                 lengthDatas.addChangeListener(new RealmChangeListener<RealmResults<LengthData>>() {
@@ -315,7 +322,7 @@ public class MeasurementFragment extends Fragment{
                         final RealmResults<LengthData> hoge = real.where(LengthData.class).findAll();
                         Log.d(TAG,hoge.toString());
                         //画面を破棄
-                        //getActivity().finish();
+                        getActivity().finish();
 
                     }
                 })

@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/amber_500"
-                app:fab_title="@string/action_area"
+                app:fab_title="@string/fab_item_suggest"
                 app:fab_colorPressed="@color/amber_700"/>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/green_500"
-                app:fab_title="@string/action_length"
+                app:fab_title="@string/fab_item_measure"
                 android:onClick="@{fragment::startMeasurementActivity}"
                 app:fab_colorPressed="@color/green_700"/>
 

@@ -27,4 +27,6 @@
     <string name="measurement_erase">Erase</string>
     <string name="nothing_input_text">please input text.</string>
     <string name="visibleTime" translatable="false">yyyy/MM/dd HH:mm</string>
+    <string name="fab_item_measure">Measurement</string>
+    <string name="fab_item_suggest">Suggest</string>
 </resources>

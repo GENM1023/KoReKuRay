@@ -26,8 +26,17 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmConfiguration;
+import io.realm.RealmObject;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import jp.yitt.bluetoothlowenergytest.databinding.DialogDataSavingBinding;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
+import jp.yitt.bluetoothlowenergytest.model.AreaData;
+import jp.yitt.bluetoothlowenergytest.model.CubeData;
+import jp.yitt.bluetoothlowenergytest.model.LengthData;
 import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 
 /**
@@ -241,6 +250,9 @@ public class MeasurementFragment extends Fragment{
                     @Override
                     public void onClick(DialogInterface dialog, int which){
 
+                        /* Realm */
+                        final Realm realm = Realm.getDefaultInstance();
+
                         EditText editText = (EditText)dialogView.findViewById(R.id.savingNameEditText);
 
                         if(editText.getText().equals(null)){
@@ -249,12 +261,61 @@ public class MeasurementFragment extends Fragment{
                                     .show();
                             return;
                         }
-                        String testss = editText.getText().toString();
+                        String name = editText.getText().toString();
+
+                        switch (dataType){
+                            case INIT:
+                                break;
+                            case LENGTH:
+                                LengthData lengthData = new LengthData();
+                                lengthData.setName(name);
+                                lengthData.setLength(Double.valueOf(dataList.get(0)));
+                                lengthData.setTime("1234/23/43");
+
+                                final RealmResults<LengthData> lengthDatas = realm.where(LengthData.class).findAll();
+                                lengthDatas.size();
+
+                                realm.beginTransaction();
+                                realm.copyToRealmOrUpdate(lengthData);
+                                realm.commitTransaction();
+
+                                lengthDatas.addChangeListener(new RealmChangeListener<RealmResults<LengthData>>() {
+                                    @Override
+                                    public void onChange(RealmResults<LengthData> element) {
+                                        Log.d(TAG,String.valueOf(lengthDatas.size()));
+
+                                    }
+                                });
 
 
-
+                                break;
+                            case AREA:
+                                AreaData areaData = new AreaData();
+                                areaData.setName(name);
+                                areaData.setHeight(Double.valueOf(dataList.get(0)));
+                                areaData.setWidth(Double.valueOf(dataList.get(1)));
+                                realm.beginTransaction();
+                                realm.copyToRealmOrUpdate(areaData);
+                                realm.commitTransaction();
+                                break;
+                            case CUBE:
+                                CubeData cubeData = new CubeData();
+                                cubeData.setName(name);
+                                cubeData.setHeight(Double.valueOf(dataList.get(0)));
+                                cubeData.setWidth(Double.valueOf(dataList.get(1)));
+                                cubeData.setLength(Double.valueOf(dataList.get(2)));
+                                realm.beginTransaction();
+                                realm.copyToRealmOrUpdate(cubeData);
+                                realm.commitTransaction();
+                                break;
+                            case OTHER:
+                                break;
+                        }
+                        Realm real = Realm.getDefaultInstance();
+                        final RealmResults<LengthData> hoge = real.where(LengthData.class).findAll();
+                        Log.d(TAG,hoge.toString());
                         //画面を破棄
-                        getActivity().finish();
+                        //getActivity().finish();
 
                     }
                 })
@@ -330,7 +391,6 @@ public class MeasurementFragment extends Fragment{
 
 
     }
-
 
 
 

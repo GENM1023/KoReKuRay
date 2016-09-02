@@ -17,7 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
+import jp.yitt.bluetoothlowenergytest.databinding.ListItemLengthBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
 
 /**
@@ -34,7 +38,7 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
     //MainListAdapter mainListAdapter;
 
     //RecyclerView
-    List<LengthData> items = new ArrayList<>();
+    List<RealmObject> items = new ArrayList<>();
     MainListAdapter adapter;
     View mView;
 
@@ -146,6 +150,7 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
+
     }
 
     @Override
@@ -166,6 +171,5 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
         Log.d(TAG, "onDestroy");
         //realm.close();
     }
-
 
 }

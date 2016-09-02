@@ -7,12 +7,14 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by genm1023 on 9/1/16.
  */
-public class ObjectData extends RealmObject {
+public class ObjectData{
     @PrimaryKey
     private long id;
-    private RealmList<LengthData> length;
-    private RealmList<AreaData> area;
-    private RealmList<CubeData> cube;
+    private String title;
+    private double Height;
+    private double Width;
+    private double Length;
+    private String time;
 
     public long getId() {
         return id;
@@ -22,27 +24,43 @@ public class ObjectData extends RealmObject {
         this.id = id;
     }
 
-    public RealmList<LengthData> getLength() {
-        return length;
+    public String getTitle() {
+        return title;
     }
 
-    public void setLength(RealmList<LengthData> length) {
-        this.length = length;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public RealmList<AreaData> getArea() {
-        return area;
+    public double getHeight() {
+        return Height;
     }
 
-    public void setArea(RealmList<AreaData> area) {
-        this.area = area;
+    public void setHeight(double height) {
+        Height = height;
     }
 
-    public RealmList<CubeData> getCube() {
-        return cube;
+    public double getWidth() {
+        return Width;
     }
 
-    public void setCube(RealmList<CubeData> cube) {
-        this.cube = cube;
+    public void setWidth(double width) {
+        Width = width;
+    }
+
+    public double getLength() {
+        return Length;
+    }
+
+    public void setLength(double length) {
+        Length = length;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -2,9 +2,11 @@ package jp.yitt.bluetoothlowenergytest;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
 
+import io.realm.RealmObject;
 import jp.yitt.bluetoothlowenergytest.databinding.ListItemLengthBinding;
 import jp.yitt.bluetoothlowenergytest.model.LengthData;
 
@@ -13,9 +15,9 @@ import jp.yitt.bluetoothlowenergytest.model.LengthData;
  */
 public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHolder> {
 
-    private List<LengthData> items;
+    private List<RealmObject> items;
 
-    public MainListAdapter(List<LengthData> items){
+    public MainListAdapter(List<RealmObject> items){
         this.items = items;
     }
 
@@ -27,9 +29,13 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        LengthData item = items.get(position);
-        holder.listItemLengthBinding.setModel(item);
-        holder.listItemLengthBinding.executePendingBindings();
+        if(items.get(0) instanceof LengthData) {
+            LengthData item = (LengthData) items.get(position);
+            holder.listItemLengthBinding.setModel(item);
+            holder.listItemLengthBinding.executePendingBindings();
+        }else {
+        }
+
         //holder.listItemLengthBinding.notifyPropertyChanged(position);
 
 

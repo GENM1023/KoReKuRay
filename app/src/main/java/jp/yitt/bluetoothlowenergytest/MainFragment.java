@@ -11,8 +11,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.nifty.cloud.mb.core.FindCallback;
+import com.nifty.cloud.mb.core.NCMBException;
+import com.nifty.cloud.mb.core.NCMBObject;
+import com.nifty.cloud.mb.core.NCMBQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding;
@@ -153,53 +158,54 @@ public class MainFragment extends Fragment  {
         //mainListAdapter.setLengthList(lengthList);
         //binding.mainListView.setAdapter(mainListAdapter);
         lengthList = new ArrayList<>();
-      //  NCMBQuery<NCMBObject> query = new NCMBQuery<>("LengthData");
+        NCMBQuery<NCMBObject> query = new NCMBQuery<>("LengthData");
 
-        //keyというフィールドがvalueとなっているデータを検索する条件を設定
-//        query.whereEqualTo("user", "testUser");
-//
-//        //データストアからデータを検索
-//        query.findInBackground(new FindCallback<NCMBObject>() {
-//            @Override
-//            public void done(List<NCMBObject> results, NCMBException e) {
-//                if (e != null) {
-//                    //検索失敗時の処理
-//                    Log.d("NCMB_TAG", "検索失敗しました" + e);
-//                } else if(results.size() > 0){
-//                    //検索成功時の処理
-//                    Log.d("NCMB_TAG", "検索結果...");
-//                    for (NCMBObject obj: results) {
-//
-//
-//                        LengthData ld = new LengthData();
-//                        ld.setLength(obj.getString("distance"));
-//                        ld.setTime("2016/08/31");
-//                        ld.setName(obj.getString("objectName"));
-//                        lengthList.add(ld);
-//
-//                        Log.d("NCMB_TAG", "objectName: " + obj.getString("objectName") +
-//                                " distance: " + obj.getString("distance") +
-//                                " angle: "    + obj.getString("angle")    +
-//                                " date: "     + obj.getString("createDate"));
-//
-//                    }
-//                    mainListAdapter = new MainListAdapter(getContext());
-//                    mainListAdapter.setLengthList(lengthList);
-//                    binding.mainListView.setAdapter(mainListAdapter);
-//
-//                } else {
-//                    Log.d("NCMB_TAG", "データはありませんでした");
-//                }
-//            }
-//        });
-        LengthData ld = new LengthData();
-                        ld.setLength("1000");
+
+  //      keyというフィールドがvalueとなっているデータを検索する条件を設定
+        query.whereEqualTo("user", "testUser");
+
+        //データストアからデータを検索
+        query.findInBackground(new FindCallback<NCMBObject>() {
+            @Override
+            public void done(List<NCMBObject> results, NCMBException e) {
+                if (e != null) {
+                    //検索失敗時の処理
+                    Log.d("NCMB_TAG", "検索失敗しました" + e);
+                } else if(results.size() > 0){
+                    //検索成功時の処理
+                    Log.d("NCMB_TAG", "検索結果...");
+                    for (NCMBObject obj: results) {
+
+
+                        LengthData ld = new LengthData();
+                        ld.setLength(obj.getString("distance"));
                         ld.setTime("2016/08/31");
-                        ld.setName("たんす");
+                        ld.setName(obj.getString("objectName"));
                         lengthList.add(ld);
-        mainListAdapter = new MainListAdapter(getContext());
+
+                        Log.d("NCMB_TAG", "objectName: " + obj.getString("objectName") +
+                                " distance: " + obj.getString("distance") +
+                                " angle: "    + obj.getString("angle")    +
+                                " date: "     + obj.getString("createDate"));
+
+                    }
+                    mainListAdapter = new MainListAdapter(getContext());
                     mainListAdapter.setLengthList(lengthList);
                     binding.mainListView.setAdapter(mainListAdapter);
+
+                } else {
+                    Log.d("NCMB_TAG", "データはありませんでした");
+                }
+            }
+        });
+//        LengthData ld = new LengthData();
+//                        ld.setLength("1000");
+//                        ld.setTime("2016/08/31");
+//                        ld.setName("たんす");
+                      //  lengthList.add(ld);
+//        mainListAdapter = new MainListAdapter(getContext());
+//                    mainListAdapter.setLengthList(lengthList);
+//                    binding.mainListView.setAdapter(mainListAdapter);
 
         binding.mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

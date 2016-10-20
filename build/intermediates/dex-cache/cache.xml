@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="a4156810f8cc28ea17287a9c426c99b7a7676d81">
-        <dex dex="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d6cddab76ff850d2337ef8472003aeff55b6c560/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

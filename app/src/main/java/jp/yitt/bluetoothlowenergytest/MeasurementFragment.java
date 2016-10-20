@@ -18,6 +18,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.nifty.cloud.mb.core.DoneCallback;
+import com.nifty.cloud.mb.core.NCMBException;
+import com.nifty.cloud.mb.core.NCMBObject;
+
 import org.apache.commons.lang.BooleanUtils;
 
 import java.nio.ByteBuffer;
@@ -264,13 +268,44 @@ public class MeasurementFragment extends Fragment{
 
                         switch (dataType){
                             case INIT:
+                                NCMBObject obj = new NCMBObject("SaveObjectTest");
+                                obj.put("user", "testUser");
+                                obj.put("objectName", "initdummy");
+                                obj.put("distance", "100mm");
+                                obj.saveInBackground(new DoneCallback() {
+                                    @Override
+                                    public void done(NCMBException e) {
+                                        if (e != null) {
+                                            Log.d("NCMB_TAG", "失敗しました" + e);
+                                            //エラー発生時の処理
+                                        } else {
+                                            Log.d("NCMB_TAG", "保存しました");
+                                            //成功時の処理
+                                        }
+                                    }
+                                });
                                 break;
                             case LENGTH:
                                 LengthData lengthData = new LengthData();
                                 lengthData.setName(name);
                                 lengthData.setLength(dataList.get(0));
                                 lengthData.setTime("1234/23/43");
-
+                                NCMBObject obj2 = new NCMBObject("SaveObjectTest");
+                                obj2.put("user", "testUser");
+                                obj2.put("objectName", "dummy");
+                                obj2.put("distance", "100mm");
+                                obj2.saveInBackground(new DoneCallback() {
+                                    @Override
+                                    public void done(NCMBException e) {
+                                        if (e != null) {
+                                            Log.d("NCMB_TAG", "失敗しました" + e);
+                                            //エラー発生時の処理
+                                        } else {
+                                            Log.d("NCMB_TAG", "保存しました");
+                                            //成功時の処理
+                                        }
+                                    }
+                                });
                              //   final RealmResults<LengthData> lengthDatas = realm.where(LengthData.class).findAll();
                               //  lengthDatas.size();
 

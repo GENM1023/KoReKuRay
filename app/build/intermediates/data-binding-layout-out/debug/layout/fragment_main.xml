@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                            
+    
+                 
+                           
+                                                                
+           
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:tag="layout/fragment_main_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainListView"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false" />
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="New Button"-->
+            <!--android:id="@+id/button"-->
+            <!--android:onClick="@{fragment::listAdd}"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--/>-->
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/multiple_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            app:fab_addButtonColorNormal="@color/blue_500"
+            app:fab_addButtonColorPressed="@color/blue_700"
+            app:fab_addButtonPlusIconColor="@color/tab_text_default"
+            app:fab_labelStyle="@style/menu_labels_style"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp">
+
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/action_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/amber_500"
+                android:tag="binding_1"                            
+                app:fab_title="@string/fab_item_suggest"
+                app:fab_colorPressed="@color/amber_700"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/action_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/green_500"
+                app:fab_title="@string/fab_item_measure"
+                android:tag="binding_2"                                
+                app:fab_colorPressed="@color/green_700"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </RelativeLayout>
+         

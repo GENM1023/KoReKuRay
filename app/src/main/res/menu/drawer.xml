@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu_main"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/menu_home"/>
+
+
+
+
+    </group>
+    <group
+        android:id="@+id/menu_other"
+        android:title="@string/menu_group_other">
+        <item
+            android:id="@+id/menu_info"
+            android:title="@string/menu_info"/>
+        <item
+            android:id="@+id/menu_wtf"
+            android:title="@string/menu_wtf"/>
+        <item
+            android:id="@+id/menu_preference"
+            android:title="@string/menu_preference"/>
+
+
+
+
+    </group>
+
+
+</menu>

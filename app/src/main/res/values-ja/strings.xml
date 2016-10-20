@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="measurement_end">計測停止</string>
+    <string name="measurement_start">計測開始</string>
+    <string name="menu">メニュー</string>
+    <string name="action_length">長さ</string>
+    <string name="action_area">面積</string>
+    <string name="menu_info">お知らせ</string>
+    <string name="menu_home">ホーム</string>
+    <string name="menu_preference">設定</string>
+    <string name="menu_group_other">その他</string>
+    <string name="menu_wtf">このアプリについて</string>
+    <string name="measurement_now">計測中</string>
+    <string name="measurement_connecting">接続中</string>
+    <string name="measurement_save">保存</string>
+    <string name="measurement_added_undo">戻す</string>
+    <string name="savedialog_title">名前をつけて保存</string>
+    <string name="savedialog_saving">保存</string>
+    <string name="savedialog_cancel">キャンセル</string>
+    <string name="measurement_added_item">値が追加されました．</string>
+    <string name="measurement_erase">消去</string>
+    <string name="nothing_input_text">値を入力してください</string>
+    <string name="fab_item_measure">計測</string>
+    <string name="fab_item_suggest">サジェスト</string>
+</resources>

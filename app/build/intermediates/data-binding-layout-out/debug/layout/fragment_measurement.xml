@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                            
+    
+                 
+                           
+                                                                       
+           
+    <RelativeLayout
+        android:id="@+id/RootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:tag="layout/fragment_measurement_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="計測"
+                android:id="@+id/statusTitleTextView"
+                android:textSize="32dp"
+                android:layout_marginTop="58dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="123.45"
+                    android:id="@+id/lengthTextView"
+                    android:textSize="46dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="cm"
+                    android:id="@+id/unitTextView"
+                    android:textSize="34dp"/>
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:id="@+id/measuredList"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_vertical"
+                android:layout_marginBottom="30dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/measurement_save"
+                    android:tag="binding_1"                 
+                    android:id="@+id/save_button"
+                    android:clickable="false"
+                    android:enabled="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/measurement_erase"
+                    android:tag="binding_2"                  
+                    android:id="@+id/erase_button"
+                    android:enabled="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unitChangeButton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:tag="binding_3"                  
+            android:src="@android:drawable/sym_def_app_icon"
+            />
+
+
+    </RelativeLayout>
+         

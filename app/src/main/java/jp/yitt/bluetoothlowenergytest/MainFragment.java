@@ -74,6 +74,7 @@ public class MainFragment extends Fragment implements OnRecyclerListener {
 
     public void startMeasurementActivity(View v){
         Log.d(TAG,"startMeasurementActivity");
+
         Intent intent = new Intent(getActivity(), MeasurementActivity.class);
 
         startActivityForResult(intent,10);

@@ -15,11 +15,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -34,13 +30,13 @@ public class BluetoothUtil {
     //BLEスキャンタイムアウト
     private static final int SCAN_TIMEOUT = 20000;
     //接続対象のデバイス名
-    private static final String DEVICE_NAME = "HyouRowGan00";
+    private static final String DEVICE_NAME = "KoRecRay";
 
     /* UUIDs */
-    //BlueNinja Motion sensor Service
-    private static final String UUID_SERVICE_APSS = "00060000-6727-11e5-988e-f07959ddcdfb";
+    //KoRecRay Service
+    private static final String UUID_SERVICE_APPS = "b60f880a-a3b1d8dc-3edd5387-595be647";
     //Motion sensor values.
-    private static final String UUID_CHARACTERISTIC_VALUE = "00060001-6727-11e5-988e-f07959ddcdfb";
+    private static final String UUID_CHARACTERISTIC_VALUE = "9BFE6019-6098-9F1C-F72F-8EDE21E72277";
     //キャラクタリスティック設定UUID
     private static final String UUID_CLIENT_CHARACTERISTIC_CONFIG = "00002902-0000-1000-8000-00805f9b34fb";
 
@@ -104,7 +100,7 @@ public class BluetoothUtil {
         @Override
         public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
             if (DEVICE_NAME.equals(device.getName())) {
-                //HyouRowGanを発見
+                //デバイスを発見
                 setStatus(AppState.BLE_DEV_FOUND);
                 mBtAdapter.stopLeScan(this);
                 mBtGatt = device.connectGatt(context.getApplicationContext(), false, mBluetoothGattCallback);
@@ -131,7 +127,7 @@ public class BluetoothUtil {
 
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
-            BluetoothGattService service = gatt.getService(UUID.fromString(UUID_SERVICE_APSS));
+            BluetoothGattService service = gatt.getService(UUID.fromString(UUID_SERVICE_APPS));
             if (service == null) {
                 //サービスが見つからない
                 setStatus(AppState.BLE_SRV_NOT_FOUND);

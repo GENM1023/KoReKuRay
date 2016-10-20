@@ -31,14 +31,14 @@ public class MainListAdapter extends BaseAdapter {
 //    public MainListAdapter(List<RealmObject> items) {
 //    }
 
-//    public ArrayList<LengthData> getLengthList(){
-//        int size = getCount();
-//        ArrayList<LengthData> lengthList = new ArrayList<LengthData>(size);
-//        for (int i=0; i < size; i++){
-//            lengthList.add(getItem(i));
-//        }
-//        return lengthList;
-//    }
+    public ArrayList<LengthData> getLengthList(){
+        int size = getCount();
+        ArrayList<LengthData> lengthList = new ArrayList<LengthData>(size);
+        for (int i=0; i < size; i++){
+            lengthList.add(getItem(i));
+        }
+        return lengthList;
+    }
 
     public void setLengthList(ArrayList<LengthData> lengthList){
         this.lengthList = lengthList;
@@ -75,5 +75,44 @@ public class MainListAdapter extends BaseAdapter {
         //Log.d("CHANGE_BOTTUN_TEST", String.valueOf(position));
         return convertView;
     }
+//    @Override
+//    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+//        ListItemLengthBinding binding = ListItemLengthBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+//
+//        View v;
+//        //0 l,1 a,2 C
+//        if (viewType == 0) {
+//            v = LayoutInflater.from(context).inflate(R.layout.list_item_length, parent, false);
+//
+//        } else if(viewType == 1){
+//            v = LayoutInflater.from(context).inflate(R.layout.list_item_area, parent, false);
+//        }else{
+//            v = LayoutInflater.from(context).inflate(R.layout.list_item_object, parent, false);
+//        }
+//
+//        return new ViewHolder(v,binding, viewType);
+//    }
+
+//    @Override
+//    public void onBindViewHolder(ViewHolder holder, int position) {
+//        if(items.get(0) instanceof LengthData) {
+//            LengthData item = (LengthData) items.get(position);
+//            holder.listItemLengthBinding.setModel(item);
+//            holder.listItemLengthBinding.executePendingBindings();
+//        }else {
+//        }
+//
+//        //holder.listItemLengthBinding.notifyPropertyChanged(position);
+//
+//
+//
+//    }
+
+//    @Override
+//    public int getItemCount(){
+//        return items.size();
+//    }
+//
+
 
 }

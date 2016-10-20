@@ -32,7 +32,7 @@
             >
 
         </activity>
-        <activity android:name=".SuggestActivity"
+        <activity android:name=".SearchFurnitureActivity"
                   android:screenOrientation="portrait"
             >
 

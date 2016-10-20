@@ -4,35 +4,27 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="28347050528600"
+    timestamp="33133745437593"
     token="-4220027317452621234" >
 
     <task
         name="javac"
-        duration="4896" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="31" />
+        duration="0" />
     <task
         name="verifier"
-        duration="13" />
+        duration="0" />
 
-    <artifact
-        location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-        type="DEX" />
-
-    <build timestamp="27956659612694" >
+    <build timestamp="32998580380016" >
         <artifact
-            location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-            type="DEX" />
+            location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
     </build>
-    <build timestamp="28347050528600" >
-        <artifact
-            location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-            type="DEX" />
-    </build>
+    <build timestamp="33133745437593" />
 
 </instant-run>

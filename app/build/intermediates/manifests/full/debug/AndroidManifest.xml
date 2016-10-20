@@ -38,7 +38,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="jp.yitt.bluetoothlowenergytest.SuggestActivity"
+            android:name="jp.yitt.bluetoothlowenergytest.SearchFurnitureActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>

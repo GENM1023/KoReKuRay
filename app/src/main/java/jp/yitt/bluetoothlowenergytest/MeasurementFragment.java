@@ -290,10 +290,11 @@ public class MeasurementFragment extends Fragment{
                                 lengthData.setName(name);
                                 lengthData.setLength(dataList.get(0));
                                 lengthData.setTime("1234/23/43");
-                                NCMBObject obj2 = new NCMBObject("SaveObjectTest");
+                                NCMBObject obj2 = new NCMBObject("LengthData");
                                 obj2.put("user", "testUser");
-                                obj2.put("objectName", "dummy");
-                                obj2.put("distance", "100mm");
+                                obj2.put("objectName", name);
+                                obj2.put("distance", dataList.get(0));
+                                obj2.put("angle", 0);
                                 obj2.saveInBackground(new DoneCallback() {
                                     @Override
                                     public void done(NCMBException e) {

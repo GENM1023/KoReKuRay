@@ -11,6 +11,8 @@ class DataBinderMapper {
                     return jp.yitt.bluetoothlowenergytest.databinding.ListItemObjectBinding.bind(view, bindingComponent);
                 case jp.yitt.bluetoothlowenergytest.R.layout.product_card:
                     return jp.yitt.bluetoothlowenergytest.databinding.ProductCardBinding.bind(view, bindingComponent);
+                case jp.yitt.bluetoothlowenergytest.R.layout.fragment_main:
+                    return jp.yitt.bluetoothlowenergytest.databinding.FragmentMainBinding.bind(view, bindingComponent);
                 case jp.yitt.bluetoothlowenergytest.R.layout.list_item_length:
                     return jp.yitt.bluetoothlowenergytest.databinding.ListItemLengthBinding.bind(view, bindingComponent);
                 case jp.yitt.bluetoothlowenergytest.R.layout.fragment_suggest:
@@ -44,6 +46,12 @@ class DataBinderMapper {
             case -44030570: {
                 if(tag.equals("layout/product_card_0")) {
                     return jp.yitt.bluetoothlowenergytest.R.layout.product_card;
+                }
+                break;
+            }
+            case -985887980: {
+                if(tag.equals("layout/fragment_main_0")) {
+                    return jp.yitt.bluetoothlowenergytest.R.layout.fragment_main;
                 }
                 break;
             }

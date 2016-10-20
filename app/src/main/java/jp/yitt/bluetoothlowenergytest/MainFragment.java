@@ -147,8 +147,8 @@ public class MainFragment extends Fragment  {
         //FloatingActionButton
         binding.actionLength.setSize(FloatingActionButton.SIZE_MINI);
         binding.actionLength.setIcon(R.drawable.scale);
-        binding.actionArea.setSize(FloatingActionButton.SIZE_MINI);
-        binding.actionArea.setIcon(R.drawable.area);
+//        binding.actionArea.setSize(FloatingActionButton.SIZE_MINI);
+//        binding.actionArea.setIcon(R.drawable.area);
 
         //縦方向の標準リストであることを指定
         //binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -1,6 +1,5 @@
 package jp.yitt.bluetoothlowenergytest;
 
-import android.app.Dialog;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,12 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmConfiguration;
-import io.realm.RealmObject;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
-import jp.yitt.bluetoothlowenergytest.databinding.DialogDataSavingBinding;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
 import jp.yitt.bluetoothlowenergytest.model.AreaData;
 import jp.yitt.bluetoothlowenergytest.model.CubeData;
@@ -275,24 +268,24 @@ public class MeasurementFragment extends Fragment{
                             case LENGTH:
                                 LengthData lengthData = new LengthData();
                                 lengthData.setName(name);
-                                lengthData.setLength(Double.valueOf(dataList.get(0)));
+                                lengthData.setLength(dataList.get(0));
                                 lengthData.setTime("1234/23/43");
 
-                                final RealmResults<LengthData> lengthDatas = realm.where(LengthData.class).findAll();
-                                lengthDatas.size();
+                             //   final RealmResults<LengthData> lengthDatas = realm.where(LengthData.class).findAll();
+                              //  lengthDatas.size();
 
                                 realm.beginTransaction();
-                                realm.copyToRealm(lengthData);
+                              //  realm.copyToRealm(lengthData);
                                 //realm.copyToRealmOrUpdate(lengthData);
                                 realm.commitTransaction();
 
-                                lengthDatas.addChangeListener(new RealmChangeListener<RealmResults<LengthData>>() {
-                                    @Override
-                                    public void onChange(RealmResults<LengthData> element) {
-                                        Log.d(TAG,String.valueOf(lengthDatas.size()));
-
-                                    }
-                                });
+                              //  lengthDatas.addChangeListener(new RealmChangeListener<RealmResults<LengthData>>() {
+//                                    @Override
+//                                    public void onChange(RealmResults<LengthData> element) {
+//                                        Log.d(TAG,String.valueOf(lengthDatas.size()));
+//
+//                                    }
+                               // });
 
 
                                 break;
@@ -319,8 +312,8 @@ public class MeasurementFragment extends Fragment{
                                 break;
                         }
                         Realm real = Realm.getDefaultInstance();
-                        final RealmResults<LengthData> hoge = real.where(LengthData.class).findAll();
-                        Log.d(TAG,hoge.toString());
+                      //  final RealmResults<LengthData> hoge = real.where(LengthData.class).findAll();
+                     //   Log.d(TAG,hoge.toString());
                         //画面を破棄
                         getActivity().finish();
 

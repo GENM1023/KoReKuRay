@@ -31,9 +31,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import jp.yitt.bluetoothlowenergytest.databinding.FragmentMeasurementBinding;
-import jp.yitt.bluetoothlowenergytest.model.AreaData;
-import jp.yitt.bluetoothlowenergytest.model.CubeData;
-import jp.yitt.bluetoothlowenergytest.model.LengthData;
 import jp.yitt.bluetoothlowenergytest.util.BluetoothUtil;
 
 /**
@@ -265,13 +262,13 @@ public class MeasurementFragment extends Fragment{
                             return;
                         }
                         String name = editText.getText().toString();
-
+                        //dataType = MeasurementType.CUBE; //テスト用
                         switch (dataType){
                             case INIT:
-                                NCMBObject obj = new NCMBObject("SaveObjectTest");
+                                NCMBObject obj = new NCMBObject("LengthData");
                                 obj.put("user", "testUser");
-                                obj.put("objectName", "initdummy");
-                                obj.put("distance", "100mm");
+                                obj.put("objectName", name);
+                                obj.put("distance", "100");
                                 obj.saveInBackground(new DoneCallback() {
                                     @Override
                                     public void done(NCMBException e) {
@@ -286,14 +283,14 @@ public class MeasurementFragment extends Fragment{
                                 });
                                 break;
                             case LENGTH:
-                                LengthData lengthData = new LengthData();
-                                lengthData.setName(name);
-                                lengthData.setLength(dataList.get(0));
-                                lengthData.setTime("1234/23/43");
+//                                LengthData lengthData = new LengthData();
+//                                lengthData.setName(name);
+//                                lengthData.setLength(dataList.get(0));
+//                                lengthData.setTime("1234/23/43");
                                 NCMBObject obj2 = new NCMBObject("LengthData");
                                 obj2.put("user", "testUser");
                                 obj2.put("objectName", name);
-                                obj2.put("distance", dataList.get(0));
+                                obj2.put("distance", "320");
                                 obj2.put("angle", 0);
                                 obj2.saveInBackground(new DoneCallback() {
                                     @Override
@@ -326,23 +323,58 @@ public class MeasurementFragment extends Fragment{
 
                                 break;
                             case AREA:
-                                AreaData areaData = new AreaData();
-                                areaData.setName(name);
-                                areaData.setHeight(Double.valueOf(dataList.get(0)));
-                                areaData.setWidth(Double.valueOf(dataList.get(1)));
-                                realm.beginTransaction();
-                                realm.copyToRealmOrUpdate(areaData);
-                                realm.commitTransaction();
+//                                AreaData areaData = new AreaData();
+//                                areaData.setName(name);
+//                                areaData.setHeight(Double.valueOf(dataList.get(0)));
+//                                areaData.setWidth(Double.valueOf(dataList.get(1)));
+//                                realm.beginTransaction();
+//                                realm.copyToRealmOrUpdate(areaData);
+//                                realm.commitTransaction();
+                                NCMBObject areaObj = new NCMBObject("LengthData");
+                                areaObj.put("user", "testUser");//計測時はここに対応するデータを文字列でいれる
+                                areaObj.put("objectName", name);
+                                areaObj.put("distance", "100");//長さのデータも文字列でok
+                                areaObj.put("height", "1000");
+                                areaObj.saveInBackground(new DoneCallback() {
+                                    @Override
+                                    public void done(NCMBException e) {
+                                        if (e != null) {
+                                            Log.d("NCMB_TAG", "失敗しました" + e);
+                                            //エラー発生時の処理
+                                        } else {
+                                            Log.d("NCMB_TAG", "保存しました");
+                                            //成功時の処理
+                                        }
+                                    }
+                                });
                                 break;
                             case CUBE:
-                                CubeData cubeData = new CubeData();
-                                cubeData.setName(name);
-                                cubeData.setHeight(Double.valueOf(dataList.get(0)));
-                                cubeData.setWidth(Double.valueOf(dataList.get(1)));
-                                cubeData.setLength(Double.valueOf(dataList.get(2)));
-                                realm.beginTransaction();
-                                realm.copyToRealmOrUpdate(cubeData);
-                                realm.commitTransaction();
+//                                CubeData cubeData = new CubeData();
+//                                cubeData.setName(name);
+//                                cubeData.setHeight(Double.valueOf(dataList.get(0)));
+//                                cubeData.setWidth(Double.valueOf(dataList.get(1)));
+//                                cubeData.setLength(Double.valueOf(dataList.get(2)));
+//                                realm.beginTransaction();
+//                                realm.copyToRealmOrUpdate(cubeData);
+//                                realm.commitTransaction();
+                                NCMBObject cubeObj = new NCMBObject("LengthData");
+                                cubeObj.put("user", "testUser");
+                                cubeObj.put("objectName", name);
+                                cubeObj.put("distance", "100mm");
+                                cubeObj.put("height", "1500");
+                                cubeObj.put("depth", "3000");
+                                cubeObj.saveInBackground(new DoneCallback() {
+                                    @Override
+                                    public void done(NCMBException e) {
+                                        if (e != null) {
+                                            Log.d("NCMB_TAG", "失敗しました" + e);
+                                            //エラー発生時の処理
+                                        } else {
+                                            Log.d("NCMB_TAG", "保存しました");
+                                            //成功時の処理
+                                        }
+                                    }
+                                });
                                 break;
                             case OTHER:
                                 break;

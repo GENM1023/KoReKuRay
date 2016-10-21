@@ -4,21 +4,21 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="265826881631"
+    timestamp="9646400493105"
     token="-4220027317452621234" >
 
     <task
         name="javac"
-        duration="7239" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="300" />
+        duration="0" />
     <task
         name="verifier"
-        duration="125" />
+        duration="0" />
 
     <artifact
         location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/outputs/apk/app-debug.apk"

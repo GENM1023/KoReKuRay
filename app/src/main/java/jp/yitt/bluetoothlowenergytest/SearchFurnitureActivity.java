@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import okhttp3.Interceptor;
@@ -75,15 +76,21 @@ public class SearchFurnitureActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
                 //.baseUrl("http://10.222.13.109:3000")
-                .baseUrl("http://192.168.11.18:3000/")
+                .baseUrl("http://192.168.1.6:3000/")
                 .addConverterFactory(GsonConverterFactory.create(gson))//Gsonの使用
                 .client(client)//カスタマイズしたokhttpのクライアントの設定
                 .build();
         //Interfaceから実装を取得
         ApiService API = retrofit.create(ApiService.class);
+        FurnitureRequest fr = new FurnitureRequest(searchName, searchLength);
+        String encodedResult = "たんす";
+        try {
+             encodedResult = URLEncoder.encode(searchName, "UTF-8");
+        }catch(Exception e){
 
+        }
         //実行
-        API.apiDemo().enqueue(new Callback<RandomUserDemo>() {
+        API.cretateRequest("/?name=" + encodedResult + "&width=" + searchLength).enqueue(new Callback<RandomUserDemo>() {
             @Override
             public void onResponse(Call<RandomUserDemo> call, retrofit2.Response<RandomUserDemo> response) {
 
@@ -127,18 +134,6 @@ public class SearchFurnitureActivity extends AppCompatActivity {
                                 Uri uri = Uri.parse(url.get(position));
                                 Intent intent = new Intent(Intent.ACTION_VIEW,uri);
                                 startActivity(intent);
-//                            switch (position) {
-//                                case 0:
-//                                    // intent.setClass(MainActivity.this, SubActivity_A.class);
-//                                    Log.d("LIST_VIEW_TEST", "いっこめクリック");
-//                                    break;
-//                                case 1:
-////                        intent.setClass(MainActivity.this, SubActivity_B.class);
-//                                    Log.d("LIST_VIEW_TEST", "にこめクリック");
-//                                    break;
-//                            }
-                            //    intent.putExtra("SELECTED_DATA", strData);
-                            //   startActivity(intent);
                         }
                     });
 
@@ -156,7 +151,7 @@ public class SearchFurnitureActivity extends AppCompatActivity {
             }
         });
 
-        API.apiDemo().enqueue(new Callback<RandomUserDemo>() {
+        API.cretateRequest("/?" + encodedResult + "&" + searchLength).enqueue(new Callback<RandomUserDemo>() {
             @Override
             public void onResponse(Call<RandomUserDemo> call, retrofit2.Response<RandomUserDemo> response) {
                 RandomUserDemo demo = response.body();

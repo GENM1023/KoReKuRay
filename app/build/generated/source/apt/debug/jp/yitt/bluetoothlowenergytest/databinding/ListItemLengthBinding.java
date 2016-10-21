@@ -9,9 +9,7 @@ public class ListItemLengthBinding extends android.databinding.ViewDataBinding  
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.imageButton, 2);
-        sViewsWithIds.put(R.id.lengthDataLength, 3);
-        sViewsWithIds.put(R.id.lengthDataDate, 4);
+        sViewsWithIds.put(R.id.imageButton, 4);
     }
     // views
     public final android.widget.ImageView imageButton;
@@ -28,9 +26,11 @@ public class ListItemLengthBinding extends android.databinding.ViewDataBinding  
     public ListItemLengthBinding(android.databinding.DataBindingComponent bindingComponent, View root) {
         super(bindingComponent, root, 0);
         final Object[] bindings = mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds);
-        this.imageButton = (android.widget.ImageView) bindings[2];
-        this.lengthDataDate = (android.widget.TextView) bindings[4];
-        this.lengthDataLength = (android.widget.TextView) bindings[3];
+        this.imageButton = (android.widget.ImageView) bindings[4];
+        this.lengthDataDate = (android.widget.TextView) bindings[3];
+        this.lengthDataDate.setTag(null);
+        this.lengthDataLength = (android.widget.TextView) bindings[2];
+        this.lengthDataLength.setTag(null);
         this.lengthDataTitle = (android.widget.TextView) bindings[1];
         this.lengthDataTitle.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
@@ -95,6 +95,9 @@ public class ListItemLengthBinding extends android.databinding.ViewDataBinding  
         }
         jp.yitt.bluetoothlowenergytest.model.LengthData model = mModel;
         java.lang.String nameModel = null;
+        java.lang.String timeModel = null;
+        java.lang.String lengthModel = null;
+        java.lang.String stringValueOfStringL = null;
 
         if ((dirtyFlags & 0x3L) != 0) {
 
@@ -103,12 +106,22 @@ public class ListItemLengthBinding extends android.databinding.ViewDataBinding  
                 if (model != null) {
                     // read model.name
                     nameModel = model.getName();
+                    // read model.time
+                    timeModel = model.getTime();
+                    // read model.length
+                    lengthModel = model.getLength();
                 }
+
+
+                // read String.valueOf(model.length)
+                stringValueOfStringL = java.lang.String.valueOf(lengthModel);
         }
         // batch finished
         if ((dirtyFlags & 0x3L) != 0) {
             // api target 1
 
+            android.databinding.adapters.TextViewBindingAdapter.setText(this.lengthDataDate, timeModel);
+            android.databinding.adapters.TextViewBindingAdapter.setText(this.lengthDataLength, stringValueOfStringL);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.lengthDataTitle, nameModel);
         }
     }

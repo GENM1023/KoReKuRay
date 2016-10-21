@@ -214,7 +214,8 @@ public class MainFragment extends Fragment  {
 
                 Log.d(TAG, "startSearchFurnitureActivity");
                 Intent intent = new Intent(getActivity(), SearchFurnitureActivity.class);
-
+                intent.putExtra("name", lengthList.get(position).getName());
+                intent.putExtra("length", lengthList.get(position).getLength());
                 startActivityForResult(intent, (int)lengthList.get(position).getId());
             }
 

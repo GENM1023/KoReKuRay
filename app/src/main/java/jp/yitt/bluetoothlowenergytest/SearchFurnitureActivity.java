@@ -42,6 +42,10 @@ public class SearchFurnitureActivity extends AppCompatActivity {
 //                  finish();
 //              }
 //          });
+        Intent intent = getIntent();
+        String searchName   = intent.getStringExtra("name");
+        String searchLength = intent.getStringExtra("length");
+        Log.d("画面遷移テスト", searchName + " " + searchLength);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(new Interceptor() {

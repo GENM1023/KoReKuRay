@@ -4,37 +4,26 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="40282641296199"
-    token="-4220027317452621234"
-    verifier="STATIC_INITIALIZER_CHANGE" >
+    timestamp="265826881631"
+    token="-4220027317452621234" >
 
     <task
         name="javac"
-        duration="3214" />
+        duration="7239" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="29" />
+        duration="300" />
     <task
         name="verifier"
-        duration="9" />
+        duration="125" />
 
     <artifact
-        location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-        type="DEX" />
+        location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="38137032766509" >
-        <artifact
-            location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="38399415127759" >
-        <artifact
-            location="/Users/yaritakouhei/Desktop/korecray_varsion_management/KoReKuRay-develop/app/build/intermediates/res/resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
     <build
         timestamp="40282641296199"
         verifier="STATIC_INITIALIZER_CHANGE" >
